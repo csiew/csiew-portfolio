@@ -24,8 +24,11 @@
       <transition name="fade">
         <div v-show="isVisible.timelineSection === true" class="grid grid-col-1 grid-gap-xl align-center justify-center width-full margin-auto-horizontal padding-m">
           <div class="grid-item flex-inline flex-flow-column aligh-center justify-center">
-            <div class="vstack margin-m-bottom">
-              <h3 class="margin-xs-top margin-s-bottom line-height-inherit text-color-secondary"><span class="text-color-accent-primary">{{ this.sections[state.currentSectionId].position }}</span><span v-if="this.sections[state.currentSectionId].company"> at <span class="text-color-accent-primary">{{ this.sections[state.currentSectionId].company }}</span></span></h3>
+            <div class="vstack align-center margin-xxl-bottom">
+              <div class="vstack align-center margin-s-bottom">
+                <h3 class="margin-xs-top margin-none-bottom line-height-1 text-color-accent-primary font-scale-xl">{{ this.sections[state.currentSectionId].position }}</h3>
+                <h4 v-if="this.sections[state.currentSectionId].company" class="margin-xs-top margin-none-bottom line-height-inherit">{{ this.sections[state.currentSectionId].company }}</h4>
+              </div>
               <span class="font-bold text-color-secondary">{{ this.sections[state.currentSectionId].location }}</span>
               <span class="font-scale-s text-color-secondary">{{ this.sections[state.currentSectionId].yearRange }}</span>
             </div>

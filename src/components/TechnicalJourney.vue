@@ -28,7 +28,7 @@
             <div v-if="this.sections[state.currentSectionId].image.caption" class="caption width-full padding-s">{{ this.sections[state.currentSectionId].image.caption }}</div>
           </div>
           <div class="grid-item flex-inline flex-flow-column aligh-center justify-center">
-            <h3 class="margin-xs-top margin-s-bottom line-height-inherit font-scale-xl">{{ this.sections[state.currentSectionId].title }}</h3>
+            <h3 class="margin-xs-top margin-xs-bottom line-height-inherit font-scale-xl">{{ this.sections[state.currentSectionId].title }}</h3>
             <div v-for="contentParagraph in this.sections[state.currentSectionId].content" v-bind:key="contentParagraph[0] + contentParagraph.length" v-html="this.formatMarkdown(contentParagraph)"></div>
           </div>
           <div v-if="this.sections[state.currentSectionId].image && this.sections[state.currentSectionId].image.align === 'right'" class="grid-item vstack align-center justify-center">
