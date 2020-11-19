@@ -1,0 +1,32 @@
+<template>
+  <div class="section width-full text-align-center margin-auto-horizontal margin-xxl-top margin-xxl-bottom padding-xl padding-xxl-top padding-xxl-bottom">
+    <div class="section-header margin-none padding-xxl-bottom">
+      <img class="profile-img profile-img-xl nodrag noselect border-radius-100pct" alt="profile.jpg" src="@/assets/images/profile.jpg" />
+      <h1 class="flex-inline width-full justify-center align-center margin-xl-top text-align-center">Clarence Siew</h1>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Hello'
+}
+</script>
+
+<style scoped>
+h1, h2, h3 {
+  letter-spacing: -0.0625rem !important;
+}
+h1 {
+  color: var(--FG-COLOR);
+  font-size: 12vmin !important;
+}
+h2 {
+  color: var(--FG-SECONDARY-COLOR);
+  font-size: 9vmin !important;
+}
+h3 {
+  color: var(--FG-SECONDARY-COLOR);
+  font-size: 6vmin !important;
+}
+</style>

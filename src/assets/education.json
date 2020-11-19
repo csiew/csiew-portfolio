@@ -1,0 +1,36 @@
+[
+    {
+        "id": "monash",
+        "level": "University",
+        "placeName": "Monash University",
+        "degree": "Bachelor of Software Engineering",
+        "location": "Melbourne, VIC",
+        "dateRange": "July 2015 - March 2020",
+        "awards": [
+            "Industry-Based Learning Scholarship"
+        ]
+    },
+    {
+        "id": "trinity",
+        "level": "A-levels / VCE",
+        "placeName": "Trinity College Foundation Studies",
+        "degree": "Foundation Studies",
+        "location": "Melbourne, VIC",
+        "dateRange": "July 2014 - June 2015"
+    },
+    {
+        "id": "uplands",
+        "level": "High School",
+        "placeName": "The International School of Penang (Uplands)",
+        "degree": "Year 7 - Year 11 (IGCSE)",
+        "location": "Penang, Malaysia",
+        "dateRange": "2009 - 2014",
+        "awards": [
+            "Best in Subject in Lower Secondary (Year 8) - Design & Technology",
+            "Best in Subject in Lower Secondary (Year 9) - English Literature",
+            "Champions of Enterprise (Year 9) - Winning Team",
+            "Best in Subject in Upper Secondary (Year 10) - History",
+            "Best in Subject in Upper Secondary (Year 11) - Information Technology"
+        ]
+    }
+]
