@@ -2,7 +2,8 @@
   <div class="section width-full text-align-center margin-auto-horizontal margin-xxl-bottom padding-xl padding-xxl-top padding-xxl-bottom">
     <div class="section-header margin-xxl-top padding-xxl-bottom">
       <img class="profile-img profile-img-xl nodrag noselect border-radius-100pct" alt="profile" v-bind:src="useAltProfile === false ? require('@/assets/images/profile_0.jpg') : require('@/assets/images/profile_1.jpg')" v-on:click="useAltProfile = !useAltProfile" />
-      <h1 class="flex-inline width-full justify-center align-center margin-xl-top text-align-center">Clarence Siew</h1>
+      <h1 class="flex-inline width-full justify-center align-center margin-xl-top margin-xl-bottom text-align-center">Clarence Siew</h1>
+      <a class="button" href="https://csiew.netlify.app/" target="_blank">Visit my website &#10230;</a>
     </div>
   </div>
 </template>

@@ -10,12 +10,12 @@
           <button v-for="pointId in Object.keys(this.sections)" v-bind:key="`timeline-point-${pointId}`" class="timeline-point" v-bind:class="(Number(pointId) === state.currentSectionId) ? 'button-selected timeline-point-selected' : ''" v-on:mouseover="this.showTooltip(Number(pointId))" v-on:mouseout="this.hideTooltip()" v-on:click="this.setCurrentSection(Number(pointId))"></button>
         </div>
         <div class="hstack hstack-space-between align-center margin-xl-top">
-          <button class="button-borderless cursor-pointer flex-inline flex-flow-row-wrap align-center justify-center padding-none line-height-1 font-scale-l" v-on:click="this.setCurrentSectionPrevious()">
+          <button class="button-borderless cursor-pointer flex-inline flex-flow-row align-center justify-center padding-none line-height-1 font-scale-l" v-on:click="this.setCurrentSectionPrevious()">
             <span>&#10229;</span>
-            <span class="padding-s">Previous</span>
+            <span class="padding-xs">Previous</span>
           </button>
-          <button class="button-borderless cursor-pointer flex-inline flex-flow-row-wrap-reverse align-center justify-center padding-none line-height-1 font-scale-l" v-on:click="this.setCurrentSectionNext()">
-            <span class="padding-s">Next</span>
+          <button class="button-borderless cursor-pointer flex-inline flex-flow-row align-center justify-center padding-none line-height-1 font-scale-l" v-on:click="this.setCurrentSectionNext()">
+            <span class="padding-xs">Next</span>
             <span>&#10230;</span>
           </button>
         </div>
@@ -25,12 +25,12 @@
         <div v-show="isVisible.timelineSection === true" class="grid grid-col-1 grid-gap-xl align-center justify-center width-full margin-auto-horizontal padding-m">
           <div class="grid-item flex-inline flex-flow-column aligh-center justify-center">
             <div class="vstack margin-m-bottom">
-              <h3 class="margin-xs-top margin-s-bottom text-color-secondary"><span class="text-color-accent-primary">{{ this.sections[state.currentSectionId].position }}</span><span v-if="this.sections[state.currentSectionId].company"> at <span class="text-color-accent-primary">{{ this.sections[state.currentSectionId].company }}</span></span></h3>
+              <h3 class="margin-xs-top margin-s-bottom line-height-inherit text-color-secondary"><span class="text-color-accent-primary">{{ this.sections[state.currentSectionId].position }}</span><span v-if="this.sections[state.currentSectionId].company"> at <span class="text-color-accent-primary">{{ this.sections[state.currentSectionId].company }}</span></span></h3>
               <span class="font-bold text-color-secondary">{{ this.sections[state.currentSectionId].location }}</span>
               <span class="font-scale-s text-color-secondary">{{ this.sections[state.currentSectionId].yearRange }}</span>
             </div>
             <div class="grid grid-col-auto-fill-320 grid-auto-rows-1fr grid-gap-s">
-              <div v-for="contentParagraph in this.sections[state.currentSectionId].content" v-bind:key="contentParagraph[0] + contentParagraph.length" class="grid-item card height-full padding-m padding-xs-top padding-xs-bottom" v-html="this.formatMarkdown(contentParagraph)"></div>
+              <div v-for="contentParagraph in this.sections[state.currentSectionId].content" v-bind:key="contentParagraph[0] + contentParagraph.length" class="grid-item card padding-m padding-s-top padding-s-bottom" v-bind:class="isMobile === true ? '' : 'height-full'" v-html="this.formatMarkdown(contentParagraph)"></div>
             </div>
           </div>
         </div>
@@ -95,6 +95,11 @@ export default {
       }
     }
   },
+  computed: {
+    isMobile: function () {
+      return UserAgent.isMobile();
+    }
+  },
   methods: {
     formatMarkdown: function (content) {
       return marked(content, { sanitized: true });
@@ -141,7 +146,7 @@ export default {
       }
     },
     showTooltip: function (sectionId) {
-      if (UserAgent.isMobile() === false) {
+      if (this.isMobile === false) {
         document.getElementById('proExpTooltip').innerHTML = this.sections[sectionId].company ? this.sections[sectionId].company : this.sections[sectionId].position;
         this.isVisible.tooltip = true;
       }

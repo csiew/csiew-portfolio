@@ -10,12 +10,12 @@
           <button v-for="pointId in Object.keys(this.sections)" v-bind:key="`timeline-point-${pointId}`" class="timeline-point" v-bind:class="(Number(pointId) === state.currentSectionId) ? 'button-selected timeline-point-selected' : ''" v-on:mouseover="this.showTooltip(Number(pointId))" v-on:mouseout="this.hideTooltip()" v-on:click="this.setCurrentSection(Number(pointId))"></button>
         </div>
         <div class="hstack hstack-space-between align-center margin-xl-top">
-          <button class="button-borderless cursor-pointer flex-inline flex-flow-row-wrap align-center justify-center padding-none line-height-1 font-scale-l" v-on:click="this.setCurrentSectionPrevious()">
+          <button class="button-borderless cursor-pointer flex-inline flex-flow-row align-center justify-center padding-none line-height-1 font-scale-l" v-on:click="this.setCurrentSectionPrevious()">
             <span>&#10229;</span>
-            <span class="padding-s">Previous</span>
+            <span class="padding-xs">Previous</span>
           </button>
-          <button class="button-borderless cursor-pointer flex-inline flex-flow-row-wrap-reverse align-center justify-center padding-none line-height-1 font-scale-l" v-on:click="this.setCurrentSectionNext()">
-            <span class="padding-s">Next</span>
+          <button class="button-borderless cursor-pointer flex-inline flex-flow-row align-center justify-center padding-none line-height-1 font-scale-l" v-on:click="this.setCurrentSectionNext()">
+            <span class="padding-xs">Next</span>
             <span>&#10230;</span>
           </button>
         </div>
@@ -28,7 +28,7 @@
             <div v-if="this.sections[state.currentSectionId].image.caption" class="caption width-full padding-s">{{ this.sections[state.currentSectionId].image.caption }}</div>
           </div>
           <div class="grid-item flex-inline flex-flow-column aligh-center justify-center">
-            <h3 class="margin-xs-top margin-s-bottom font-scale-xl">{{ this.sections[state.currentSectionId].title }}</h3>
+            <h3 class="margin-xs-top margin-s-bottom line-height-inherit font-scale-xl">{{ this.sections[state.currentSectionId].title }}</h3>
             <div v-for="contentParagraph in this.sections[state.currentSectionId].content" v-bind:key="contentParagraph[0] + contentParagraph.length" v-html="this.formatMarkdown(contentParagraph)"></div>
           </div>
           <div v-if="this.sections[state.currentSectionId].image && this.sections[state.currentSectionId].image.align === 'right'" class="grid-item vstack align-center justify-center">
