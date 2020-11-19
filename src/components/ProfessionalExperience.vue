@@ -11,12 +11,12 @@
         </div>
         <div class="hstack hstack-space-between align-center margin-xl-top">
           <button class="button-borderless cursor-pointer flex-inline flex-flow-row align-center justify-center padding-none line-height-1 font-scale-l" v-on:click="this.setCurrentSectionPrevious()">
-            <span>&#10229;</span>
+            <span>&#10094;</span>
             <span class="padding-xs">Previous</span>
           </button>
           <button class="button-borderless cursor-pointer flex-inline flex-flow-row align-center justify-center padding-none line-height-1 font-scale-l" v-on:click="this.setCurrentSectionNext()">
             <span class="padding-xs">Next</span>
-            <span>&#10230;</span>
+            <span>&#10095;</span>
           </button>
         </div>
       </div>

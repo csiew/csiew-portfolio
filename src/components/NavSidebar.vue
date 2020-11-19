@@ -1,5 +1,5 @@
 <template>
-  <div class="position-fixed anchor-right width-auto noselect" v-bind:class="isVisible.sidebar === true ? (isMobile === true ? 'z-index-200 width-full height-full' : 'z-index-200 height-auto') : (isMobile === true ? 'width-full height-auto' : 'height-auto')">
+  <div class="z-index-200 position-fixed anchor-right width-auto noselect" v-bind:class="isVisible.sidebar === true ? (isMobile === true ? 'width-full height-full' : 'height-auto') : (isMobile === true ? 'width-full height-auto' : 'height-auto')">
     <div class="vstack height-full align-end">
       <div class="nav-translucent z-index-200 grid grid-auto-flow-column grid-gap-xl align-center justify-end padding-s" v-bind:class="isMobile === true ? 'nav nav-border-bottom width-full margin-none font-scale-xl' : 'card width-auto margin-s'">
         <button title="Back to top" class="button-borderless cursor-pointer padding-none line-height-1 font-scale-s" v-on:click="this.goToSection('top')">
