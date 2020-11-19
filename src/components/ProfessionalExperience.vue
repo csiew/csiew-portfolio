@@ -29,7 +29,7 @@
               <span class="font-bold text-color-secondary">{{ this.sections[state.currentSectionId].location }}</span>
               <span class="font-scale-s text-color-secondary">{{ this.sections[state.currentSectionId].yearRange }}</span>
             </div>
-            <div class="grid grid-col-auto-fill-320 grid-auto-rows-1fr grid-gap-s">
+            <div class="grid grid-gap-s" v-bind:class="isMobile === true ? 'grid-col-1' : 'grid-col-auto-fill-320 grid-auto-rows-1fr'">
               <div v-for="contentParagraph in this.sections[state.currentSectionId].content" v-bind:key="contentParagraph[0] + contentParagraph.length" class="grid-item card padding-m padding-s-top padding-s-bottom" v-bind:class="isMobile === true ? '' : 'height-full'" v-html="this.formatMarkdown(contentParagraph)"></div>
             </div>
           </div>
