@@ -103,16 +103,12 @@ export default {
     nextSection: function () {
       if (this.state.currentSectionIndex < this.sections.length - 1) {
         this.state.currentSectionIndex += 1;
-      } else {
-        this.state.currentSectionIndex = 0;
       }
       this.scrollToSection(this.sections[this.state.currentSectionIndex].id);
     },
     previousSection: function () {
       if (this.state.currentSectionIndex > 0) {
         this.state.currentSectionIndex -= 1;
-      } else {
-        this.state.currentSectionIndex = this.sections.length - 1;
       }
       this.scrollToSection(this.sections[this.state.currentSectionIndex].id);
     }
@@ -121,6 +117,18 @@ export default {
 </script>
 
 <style scoped>
+button {
+  transform: scale(1) translateY(0%);
+  transition: var(--TRANSITION);
+}
+button:hover {
+  color: var(--ACCENT-PRIMARY-COLOR) !important;
+  transform: scale(1.325) translateY(-5%);
+}
+button:active {
+  transform: scale(1) translateY(0%);
+}
+
 .card-list li {
   font-family: var(--FONT-FAMILY-HEADER);
 }
@@ -130,15 +138,15 @@ export default {
 
 .slide-enter-active,
 .slide-leave-active {
-    transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out;
 }
 .slide-enter-from,
 .slide-leave-to {
-    opacity: 0;
-    transform: translate(50%, -75%) scale(0) skewX(-10deg);
+  opacity: 0;
+  transform: translate(50%, -75%) scale(0) skewX(-10deg);
 }
 .slide-enter-to {
-    opacity: 1;
-    transform: translateY(0%, 0%) scale(1) skewX(0deg);
+  opacity: 1;
+  transform: translateY(0%, 0%) scale(1) skewX(0deg);
 }
 </style>
