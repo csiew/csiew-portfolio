@@ -83,6 +83,6 @@
 }
 .card-marked:hover {
   box-shadow: var(--CARD-BOX-SHADOW);
-  transform: scale(1.0175);
+  transform: scale(1.0125);
   transition: var(--TRANSITION);
 }
