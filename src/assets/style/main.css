@@ -219,6 +219,9 @@ hr {
     background: var(--NAVBAR-BG-COLOR);
     box-shadow: var(--NAVBAR-SHADOW);
 }
+.nav-shadow {
+    box-shadow: var(--NAVBAR-SHADOW);
+}
 .nav-gradient {
     background: var(--NAVBAR-BG-COLOR-GRADIENT);
 }
@@ -230,9 +233,10 @@ hr {
     background: none !important;
     box-shadow: none !important;
 }
-.nav-border-bottom {
-    border-bottom: 1px solid var(--HR-BORDER-COLOR);
-}
+.nav-border-top { border-top: 1px solid var(--HR-BORDER-COLOR); }
+.nav-border-left { border-left: 1px solid var(--HR-BORDER-COLOR); }
+.nav-border-right { border-right: 1px solid var(--HR-BORDER-COLOR); }
+.nav-border-bottom { border-bottom: 1px solid var(--HR-BORDER-COLOR); }
 .navmenu {
     z-index: 50;
     position: fixed;

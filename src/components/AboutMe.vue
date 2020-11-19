@@ -3,7 +3,7 @@
     <div class="section-header">
       <h2>About Me</h2>
     </div>
-    <div class="width-full width-max-800 margin-auto-horizontal">
+    <div class="width-full width-max-800 margin-auto-horizontal margin-xl-bottom">
       <div class="margin-m-bottom font-scale-xl text-color-secondary">
         <p>
           Hi there, I'm Clarence!

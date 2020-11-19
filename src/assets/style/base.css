@@ -120,12 +120,16 @@
 
 .grid-col-auto-fill-128 { grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)) !important; }
 .grid-col-auto-fill-256 { grid-template-columns: repeat(auto-fill, minmax(256px, 1fr)) !important; }
+.grid-col-auto-fill-280 { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important; }
+.grid-col-auto-fill-300 { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important; }
 .grid-col-auto-fill-320 { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important; }
 .grid-col-auto-fill-480 { grid-template-columns: repeat(auto-fill, minmax(480px, 1fr)) !important; }
 .grid-col-auto-fill-640 { grid-template-columns: repeat(auto-fill, minmax(640px, 1fr)) !important; }
 
 .grid-col-auto-fit-128 { grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)) !important; }
 .grid-col-auto-fit-256 { grid-template-columns: repeat(auto-fit, minmax(256px, 1fr)) !important; }
+.grid-col-auto-fit-280 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important; }
+.grid-col-auto-fit-300 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important; }
 .grid-col-auto-fit-320 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important; }
 .grid-col-auto-fit-480 { grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)) !important; }
 .grid-col-auto-fit-640 { grid-template-columns: repeat(auto-fit, minmax(640px, 1fr)) !important; }
@@ -351,6 +355,8 @@
     margin-bottom: 8px;
 }
 .vstack-height-full {
+    overflow-x: hidden;
+    overflow-y: auto;
     max-height: 100vh;
     height: 100%;
 }
@@ -372,6 +378,9 @@
     margin-bottom: 0;
 }
 
+.border-none {
+    border: none !important;
+}
 .border-radius-100pct {
     border-radius: 100% !important;
 }
@@ -388,6 +397,7 @@
 .text-color-accent-secondary { color: var(--ACCENT-SECONDARY-COLOR) !important; }
 .text-color-primary { color: var(--FG-COLOR) !important; }
 .text-color-secondary { color: var(--FG-SECONDARY-COLOR) !important; }
+.bg-color-none { background: none !important; }
 .bg-color-primary { background: var(--BG-COLOR) !important; }
 .bg-color-secondary { background: var(--BG-SECONDARY-COLOR) !important; }
 .bg-color-tertiary { background: var(--BG-TERTIARY-COLOR) !important; }

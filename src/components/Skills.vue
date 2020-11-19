@@ -3,7 +3,7 @@
     <div class="section-header">
       <h2>Skills</h2>
     </div>
-    <div class="width-full width-max-800 margin-auto-horizontal">
+    <div class="width-full width-max-800 margin-auto-horizontal margin-xl-bottom">
       <div class="hstack margin-l-bottom">
         <input class="width-full" type="text" placeholder="Filter..." @keyup="filter" v-model="filterTerm" />
         <button v-if="this.filterTerm.length > 0" class="margin-s-left cursor-pointer" v-on:click="this.resetResults()">Clear</button>

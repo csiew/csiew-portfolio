@@ -1,6 +1,6 @@
 <template>
-  <div class="section width-full text-align-center margin-auto-horizontal margin-xxl-top margin-xxl-bottom padding-xl padding-xxl-top padding-xxl-bottom">
-    <div class="section-header margin-none padding-xxl-bottom">
+  <div class="section width-full text-align-center margin-auto-horizontal margin-xxl-bottom padding-xl padding-xxl-top padding-xxl-bottom">
+    <div class="section-header margin-xxl-top padding-xxl-bottom">
       <img class="profile-img profile-img-xl nodrag noselect border-radius-100pct" alt="profile.jpg" src="@/assets/images/profile.jpg" />
       <h1 class="flex-inline width-full justify-center align-center margin-xl-top text-align-center">Clarence Siew</h1>
     </div>

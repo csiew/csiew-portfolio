@@ -1,100 +1,144 @@
 <template>
-  <div id="navSidebar" class="nav navsidebar">
-    <div class="vstack height-full justify-space-between height-full">
-      <div class="vstack height-auto">
-        <div class="width-full text-align-left padding-s">
-          <div class="vstack margin-none">
-            <router-link v-for="item in this.pages" v-bind:key="item.id" class="tabbar-vertical-item" v-bind:to="item.route">{{ item.label }}</router-link>
-          </div>
-        </div>
+  <div class="position-fixed anchor-right width-auto noselect" v-bind:class="isVisible.sidebar === true ? (isMobile === true ? 'z-index-200 width-full height-full' : 'z-index-200 height-auto') : (isMobile === true ? 'width-full height-auto' : 'height-auto')">
+    <div class="vstack height-full align-end">
+      <div class="nav-translucent z-index-200 grid grid-auto-flow-column grid-gap-xl align-center justify-end padding-s" v-bind:class="isMobile === true ? 'nav nav-border-bottom width-full margin-none font-scale-xl' : 'card width-auto margin-s'">
+        <button title="Back to top" class="button-borderless cursor-pointer padding-none line-height-1 font-scale-s" v-on:click="this.goToSection('top')">
+          &UpArrowBar;
+        </button>
+        <button title="Previous section" class="button-borderless cursor-pointer padding-none line-height-1 font-scale-s" v-on:click="this.previousSection()">
+          &uarr;
+        </button>
+        <button title="Next section" class="button-borderless cursor-pointer padding-none line-height-1 font-scale-s" v-on:click="this.nextSection()">
+          &darr;
+        </button>
+        <button title="Toggle navigation menu" class="button-borderless cursor-pointer padding-none line-height-1 font-scale-s" v-on:click="isVisible.sidebar = !isVisible.sidebar">
+          <span v-if="isVisible.sidebar === false">&#9776;</span>
+          <span v-else>&#10005;</span>
+        </button>
       </div>
+      <transition v-bind:name="isMobile === true ? 'fade' : 'slide'">
+        <div v-if="isVisible.sidebar === true" class="card-list width-full" v-bind:class="isMobile === true ? 'nav-translucent vstack align-center justify-center width-full height-full font-scale-xl' : 'card width-auto margin-s-right'">
+          <ul>
+            <li v-for="item in this.sections" v-bind:key="item.id" v-show="!item.hide" class="cursor-pointer" v-bind:class="isMobile === true ? 'width-full padding-s hstack align-center justify-center' : 'padding-l-left padding-m-right padding-xs-top padding-xs-bottom hstack align-end justify-center'" v-on:click="this.goToSection(item.id); isVisible.sidebar = false">
+              {{ item.label }}
+            </li>
+          </ul>
+        </div>
+      </transition>
     </div>
   </div>
 </template>
 
 <script>
+import UserAgent from '@/utils/UserAgent.js';
+
 export default {
   name: 'NavSidebar',
   data() {
     return {
-      pages: [
+      isVisible: {
+        sidebar: false
+      },
+      state: {
+        currentSectionIndex: 0
+      },
+      sections: [
         {
-          id: 'home',
-          label: 'Home',
-          route: '/'
+          id: 'top',
+          label: 'Back to top',
+          hide: true
         },
         {
           id: 'about',
-          label: 'About',
-          route: '/about'
+          label: 'About Me'
         },
         {
-          id: 'projects',
-          label: 'Projects',
-          route: '/projects'
+          id: 'skills',
+          label: 'Skills'
+        },
+        {
+          id: 'qualities',
+          label: 'Personal Qualities'
+        },
+        {
+          id: 'edu',
+          label: 'Education'
+        },
+        {
+          id: 'experience',
+          label: 'Professional Experience'
+        },
+        {
+          id: 'techjourney',
+          label: 'Technical Journey'
+        },
+        {
+          id: 'contact',
+          label: 'Contact'
         }
       ]
     };
   },
+  computed: {
+    isMobile: function () {
+      return UserAgent.isMobile();
+    }
+  },
   methods: {
-    isMobile() {
-      if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        return true
+    scrollToSection: function (sectionId) {
+      try {
+        const el = document.getElementById(sectionId);
+        el && el.scrollIntoView({
+          block: 'start',
+          behavior: 'smooth'
+        });
+      } catch (err) {
+        console.warn(err);
+      }
+    },
+    goToSection: function (sectionId) {
+      this.state.currentSectionIndex = this.sections.findIndex(x => x.id === sectionId);
+      this.scrollToSection(sectionId);
+    },
+    nextSection: function () {
+      if (this.state.currentSectionIndex < this.sections.length - 1) {
+        this.state.currentSectionIndex += 1;
       } else {
-        return false
+        this.state.currentSectionIndex = 0;
       }
+      this.scrollToSection(this.sections[this.state.currentSectionIndex].id);
     },
-    revealNavMenuButton() {
-      document.getElementById("navbarMenuButton").style.visibility = "visible";
-      document.getElementById("navbarMenuButton").style.display = "inline-block";
-    },
-    hideNavMenuButton() {
-      document.getElementById("navbarMenuButton").style.visibility = "hidden";
-      document.getElementById("navbarMenuButton").style.display = "none";
-    },
-    revealNavMenu() {
-      document.getElementById("navbarMenu").style.visibility = "visible";
-      document.getElementById("navbarMenu").style.display = "inline-block";
-    },
-    hideNavMenu() {
-      document.getElementById("navbarMenu").style.visibility = "hidden";
-      document.getElementById("navbarMenu").style.display = "none";
-    },
-    toggleNavMenu() {
-      let navbarMenu = document.getElementById("navbarMenu");
-      if (navbarMenu != null) {
-        if (navbarMenu.style.visibility === "hidden") {
-          this.revealNavMenu();
-        } else {
-          this.hideNavMenu();
-        }
+    previousSection: function () {
+      if (this.state.currentSectionIndex > 0) {
+        this.state.currentSectionIndex -= 1;
+      } else {
+        this.state.currentSectionIndex = this.sections.length - 1;
       }
-    },
-    revealNavLinks() {
-      document.getElementById("navbarLinks").style.visibility = "visible";
-      document.getElementById("navbarLinks").style.display = "inline-block";
-    },
-    hideNavLinks() {
-      document.getElementById("navbarLinks").style.visibility = "hidden";
-      document.getElementById("navbarLinks").style.display = "none";
+      this.scrollToSection(this.sections[this.state.currentSectionIndex].id);
     }
   }
 }
 </script>
 
 <style scoped>
-.navsidebar {
-  border-right: var(--CARD-BORDER-WIDTH) solid var(--CARD-BORDER-COLOR);
+.card-list li {
+  font-family: var(--FONT-FAMILY-HEADER);
+}
+.card-list li:active {
+  filter: brightness(0.125) contrast(0.125);
 }
 
-#navSidebar {
-  visibility: visible;
-  display: inline-flex;
+.slide-enter-active,
+.slide-leave-active {
+    transition: all 0.25s ease-in-out;
 }
-@media only screen and (max-width: 1024px) {
-  #navSidebar {
-    visibility: hidden;
-    display: none;
-  }
+.slide-enter-from,
+.slide-leave-to {
+    opacity: 0;
+    transform: translate(50%, -75%) scale(0) skewX(-10deg);
+}
+.slide-enter-to {
+    opacity: 1;
+    transform: translateY(0%, 0%) scale(1) skewX(0deg);
 }
 </style>

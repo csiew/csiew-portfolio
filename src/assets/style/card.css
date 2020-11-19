@@ -86,3 +86,7 @@
   transform: scale(1.0125);
   transition: var(--TRANSITION);
 }
+
+.card-shadow {
+    box-shadow: var(--CARD-BOX-SHADOW);
+}
