@@ -5,12 +5,20 @@
     </div>
     <div class="grid grid-col-1 grid-gap-l width-full width-max-1024 margin-auto-horizontal">
       <div id="techJourneyTooltip" v-show="isVisible.tooltip === true" class="tooltip"></div>
-      <div class="hstack hstack-space-between align-center padding-l-top padding-m-left padding-m-right">
-        <button class="button-borderless cursor-pointer padding-none line-height-1 font-scale-l" v-on:click="this.setCurrentSectionPrevious()">&#10229;</button>
-        <div class="timeline width-max-480 margin-l-left margin-l-right" v-on:mousemove="this.setTooltipPosition" v-on:mouseout="this.hideTooltip()">
+      <div class="vstack width-full align-center justify-center margin-auto-horizontal padding-l-top padding-m-left padding-m-right">
+        <div class="timeline width-full margin-l-left margin-l-right" v-on:mousemove="this.setTooltipPosition" v-on:mouseout="this.hideTooltip()">
           <button v-for="pointId in Object.keys(this.sections)" v-bind:key="`timeline-point-${pointId}`" class="timeline-point" v-bind:class="(Number(pointId) === state.currentSectionId) ? 'button-selected timeline-point-selected' : ''" v-on:mouseover="this.showTooltip(Number(pointId))" v-on:mouseout="this.hideTooltip()" v-on:click="this.setCurrentSection(Number(pointId))"></button>
         </div>
-        <button class="button-borderless cursor-pointer padding-none line-height-1 font-scale-l" v-on:click="this.setCurrentSectionNext()">&#10230;</button>
+        <div class="hstack hstack-space-between align-center margin-xl-top">
+          <button class="button-borderless cursor-pointer flex-inline flex-flow-row-wrap align-center justify-center padding-none line-height-1 font-scale-l" v-on:click="this.setCurrentSectionPrevious()">
+            <span>&#10229;</span>
+            <span class="padding-s">Previous</span>
+          </button>
+          <button class="button-borderless cursor-pointer flex-inline flex-flow-row-wrap-reverse align-center justify-center padding-none line-height-1 font-scale-l" v-on:click="this.setCurrentSectionNext()">
+            <span class="padding-s">Next</span>
+            <span>&#10230;</span>
+          </button>
+        </div>
       </div>
       <hr class="margin-l-top margin-none-bottom" />
       <transition name="fade">
