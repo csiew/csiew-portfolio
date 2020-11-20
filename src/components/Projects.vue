@@ -5,26 +5,28 @@
     </div>
     <div class="grid grid-gap-xl width-full width-max-1024 margin-auto-horizontal margin-xl-bottom" v-bind:class="isMobile === true ? 'grid-col-1' : 'grid-col-1-3'">
       <div v-if="isMobile === false" class="grid-item nav-border-right vstack height-full margin-none padding-m-right text-align-right">
-        <div v-for="item in projects" v-bind:key="item.id" class="tabbar-vertical-item cursor-pointer" v-bind:class="state.currentProjectId === item.id ? 'tabbar-vertical-item-selected' : ''" v-on:click="state.currentProjectId = item.id">{{ item.name }}</div>
+        <div v-for="item in projects" v-bind:key="item.id" class="tabbar-vertical-item cursor-pointer" v-bind:class="state.currentProjectId === item.id ? 'tabbar-vertical-item-selected' : ''" v-on:click="this.setSelectedProject(item.id)">{{ item.name }}</div>
       </div>
       <div v-else class="grid-item nav-border-bottom hstack overflow-x-auto align-center justify-stretch width-full padding-xs-bottom">
-        <div v-for="item in projects" v-bind:key="item.id" class="project-tab tabbar-vertical-item margin-none padding-xs-top padding-xs-bottom padding-s-left padding-s-right text-align-center" v-bind:class="state.currentProjectId === item.id ? 'tabbar-vertical-item-selected' : ''" v-on:click="state.currentProjectId = item.id">{{ item.name }}</div>
+        <div v-for="item in projects" v-bind:key="item.id" class="project-tab tabbar-vertical-item margin-none padding-xs-top padding-xs-bottom padding-s-left padding-s-right text-align-center" v-bind:class="state.currentProjectId === item.id ? 'tabbar-vertical-item-selected' : ''" v-on:click="this.setSelectedProject(item.id)">{{ item.name }}</div>
       </div>
-      <div class="grid-item vstack card width-full padding-m">
-        <div class="margin-s-bottom text-align-center">
-          <h3 class="margin-xs-top margin-none-bottom line-height-1 text-color-accent-primary font-scale-xxl">{{ selectedProject.name }}</h3>
-          <h4 class="margin-xs-top margin-none-bottom line-height-inherit">{{ selectedProject.timeRange }}</h4>
+      <transition name="fade">
+        <div v-show="isVisible.projectCard === true" class="grid-item vstack card width-full padding-m">
+          <div class="margin-s-bottom text-align-center">
+            <h3 class="margin-xs-top margin-none-bottom line-height-1 text-color-accent-primary font-scale-xxl">{{ selectedProject.name }}</h3>
+            <h4 class="margin-xs-top margin-none-bottom line-height-inherit">{{ selectedProject.timeRange }}</h4>
+          </div>
+          <hr class="margin-xs-top margin-xs-bottom" />
+          <div v-if="selectedProject.imgUrl" class="margin-s-top margin-s-bottom">
+            <a v-bind:href="getProjectImgUrl(selectedProject.imgUrl)"><img v-bind:alt="selectedProject.imgUrl" class="card card-img" v-bind:src="getProjectImgUrl(selectedProject.imgUrl)" style="width: 100%; height: auto;" /></a>
+          </div>
+          <div class="margin-s-bottom" v-html="this.formatMarkdown(selectedProject.description)"></div>
+          <div class="grid grid-col-2 grid-gap-s width-full">
+            <a class="button" v-bind:class="!selectedProject.url ? 'button-disabled' : ''" v-bind:href="selectedProject.url ? selectedProject.url : null" target="_blank" v-bind:title="selectedProject.url ? 'Visit project website' : 'Project does not have a website'">Website</a>
+            <a class="button" v-bind:class="!selectedProject.github ? 'button-disabled' : ''" v-bind:href="selectedProject.github ? selectedProject.github : null" target="_blank" v-bind:title="selectedProject.url ? 'Visit project repository' : 'Project does not have a repository'">GitHub</a>
+          </div>
         </div>
-        <hr class="margin-xs-top margin-xs-bottom" />
-        <div v-if="selectedProject.imgUrl" class="margin-s-top margin-s-bottom">
-          <a v-bind:href="getProjectImgUrl(selectedProject.imgUrl)"><img v-bind:alt="selectedProject.imgUrl" class="card card-img" v-bind:src="getProjectImgUrl(selectedProject.imgUrl)" style="width: 100%; height: auto;" /></a>
-        </div>
-        <div class="margin-s-bottom" v-html="this.formatMarkdown(selectedProject.description)"></div>
-        <div class="grid grid-col-2 grid-gap-s width-full">
-          <a class="button" v-bind:class="!selectedProject.url ? 'button-disabled' : ''" v-bind:href="selectedProject.url ? selectedProject.url : null" target="_blank" v-bind:title="selectedProject.url ? 'Visit project website' : 'Project does not have a website'">Website</a>
-          <a class="button" v-bind:class="!selectedProject.github ? 'button-disabled' : ''" v-bind:href="selectedProject.github ? selectedProject.github : null" target="_blank" v-bind:title="selectedProject.url ? 'Visit project repository' : 'Project does not have a repository'">GitHub</a>
-        </div>
-      </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -38,6 +40,9 @@ export default {
   name: 'Projects',
   data() {
     return {
+      isVisible: {
+        projectCard: true
+      },
       state: {
         currentProjectId: '',
       },
@@ -62,6 +67,15 @@ export default {
       } catch (err) {
         console.warn(err);
         return;
+      }
+    },
+    setSelectedProject: function (sectionId) {
+      if (this.state.currentProjectId !== sectionId) {
+        this.isVisible.projectCard = false;
+        setTimeout(() => {
+          this.state.currentProjectId = sectionId;
+          this.isVisible.projectCard = true;
+        }, 500);
       }
     }
   },
