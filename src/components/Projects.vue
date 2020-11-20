@@ -7,8 +7,8 @@
       <div v-if="isMobile === false" class="grid-item nav-border-right vstack height-full margin-none padding-m-right text-align-right">
         <div v-for="item in projects" v-bind:key="item.id" class="tabbar-vertical-item cursor-pointer" v-bind:class="state.currentProjectId === item.id ? 'tabbar-vertical-item-selected' : ''" v-on:click="state.currentProjectId = item.id">{{ item.name }}</div>
       </div>
-      <div v-else class="grid-item nav-border-bottom grid grid-col-2 grid-gap-s padding-m-bottom">
-        <div v-for="item in projects" v-bind:key="item.id" class="tabbar-vertical-item margin-none padding-xs-top padding-xs-bottom padding-s-left padding-s-right text-align-center" v-bind:class="state.currentProjectId === item.id ? 'tabbar-vertical-item-selected' : ''" v-on:click="state.currentProjectId = item.id">{{ item.name }}</div>
+      <div v-else class="grid-item nav-border-bottom hstack overflow-x-auto align-center justify-stretch width-full padding-xs-bottom">
+        <div v-for="item in projects" v-bind:key="item.id" class="project-tab tabbar-vertical-item margin-none padding-xs-top padding-xs-bottom padding-s-left padding-s-right text-align-center" v-bind:class="state.currentProjectId === item.id ? 'tabbar-vertical-item-selected' : ''" v-on:click="state.currentProjectId = item.id">{{ item.name }}</div>
       </div>
       <div class="grid-item vstack card width-full padding-m">
         <span v-if="selectedProject.imgUrl" class="margin-s-bottom">
@@ -70,5 +70,9 @@ export default {
 <style scoped>
 .grid-item {
   align-self: flex-start;
+}
+.project-tab {
+  width: auto;
+  white-space: nowrap;
 }
 </style>

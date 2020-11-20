@@ -119,6 +119,10 @@
 .grid-auto-flow-row { grid-auto-flow: row !important; }
 .grid-auto-flow-column { grid-auto-flow: column !important; }
 
+.grid-col-auto { grid-template-columns: auto !important; }
+.grid-col-1fr { grid-template-columns: 1fr !important; }
+.grid-col-max-content { grid-template-columns: max-content !important; }
+
 .grid-col-auto-fill-128 { grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)) !important; }
 .grid-col-auto-fill-256 { grid-template-columns: repeat(auto-fill, minmax(256px, 1fr)) !important; }
 .grid-col-auto-fill-280 { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important; }
@@ -286,6 +290,11 @@
 
 .text-line-height-1 { line-height: 1 !important; }
 
+.overflow-x-auto { overflow-x: auto !important; }
+.overflow-y-auto { overflow-y: auto !important; }
+.overflow-x-hidden { overflow-x: hidden !important; }
+.overflow-y-hidden { overflow-y: hidden !important; }
+
 .hstack {
     display: inline-flex;
     flex-flow: row;
@@ -365,6 +374,9 @@
 .vstack-space-between {
     align-items: center;
     justify-content: space-between;
+}
+.vstack-reverse {
+    flex-flow: column-reverse;
 }
 
 .list-no-style {
