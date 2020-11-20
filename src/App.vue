@@ -9,6 +9,7 @@
     <ProfessionalExperience id="experience" />
     <TechnicalJourney id="techjourney" />
     <Projects id="projects" />
+    <PersonalWebsite id="website" />
     <Contact id="contact" />
     <Footer />
   </div>
@@ -24,6 +25,7 @@ import PersonalQualities from '@/components/PersonalQualities.vue';
 import TechnicalJourney from '@/components/TechnicalJourney.vue';
 import ProfessionalExperience from '@/components/ProfessionalExperience.vue';
 import Projects from '@/components/Projects.vue';
+import PersonalWebsite from '@/components/PersonalWebsite.vue';
 import Contact from '@/components/Contact.vue';
 import Footer from '@/components/Footer.vue';
 
@@ -39,6 +41,7 @@ export default {
     TechnicalJourney,
     ProfessionalExperience,
     Projects,
+    PersonalWebsite,
     Contact,
     Footer
   }

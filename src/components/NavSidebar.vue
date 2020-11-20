@@ -77,6 +77,10 @@ export default {
           label: 'Projects'
         },
         {
+          id: 'website',
+          label: 'My Website'
+        },
+        {
           id: 'contact',
           label: 'Contact'
         }
