@@ -8,6 +8,7 @@
     <Education id="edu" />
     <ProfessionalExperience id="experience" />
     <TechnicalJourney id="techjourney" />
+    <Projects id="projects" />
     <Contact id="contact" />
     <Footer />
   </div>
@@ -22,6 +23,7 @@ import Education from '@/components/Education.vue';
 import PersonalQualities from '@/components/PersonalQualities.vue';
 import TechnicalJourney from '@/components/TechnicalJourney.vue';
 import ProfessionalExperience from '@/components/ProfessionalExperience.vue';
+import Projects from '@/components/Projects.vue';
 import Contact from '@/components/Contact.vue';
 import Footer from '@/components/Footer.vue';
 
@@ -36,6 +38,7 @@ export default {
     PersonalQualities,
     TechnicalJourney,
     ProfessionalExperience,
+    Projects,
     Contact,
     Footer
   }

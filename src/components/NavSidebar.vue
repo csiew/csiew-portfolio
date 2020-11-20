@@ -2,13 +2,13 @@
   <div class="z-index-200 position-fixed anchor-right width-auto noselect" v-bind:class="isVisible.sidebar === true ? (isMobile === true ? 'width-full height-full' : 'height-auto') : (isMobile === true ? 'width-full height-auto' : 'height-auto')">
     <div class="vstack height-full align-end">
       <div class="nav-translucent z-index-200 grid grid-auto-flow-column grid-gap-xl align-center padding-xs-top padding-xs-bottom" v-bind:class="isMobile === true ? 'nav nav-border-bottom justify-space-between width-full margin-none padding-m-left padding-m-right font-scale-xl' : 'card nav-shadow justify-end width-auto margin-s padding-s-left padding-s-right'">
-        <button title="Back to top" class="button-borderless cursor-pointer padding-xs line-height-1 font-scale-s" v-on:click="this.goToSection('top')">
+        <button title="Back to top" class="button-borderless cursor-pointer padding-xs line-height-1 font-scale-s" v-on:click="this.goToSection('top'); isVisible.sidebar = false">
           TOP
         </button>
-        <button title="Previous section" class="button-borderless cursor-pointer padding-xs line-height-1 font-scale-s" v-on:click="this.previousSection()">
+        <button title="Previous section" class="button-borderless cursor-pointer padding-xs line-height-1 font-scale-s" v-on:click="this.previousSection(); isVisible.sidebar = false">
           &uarr;
         </button>
-        <button title="Next section" class="button-borderless cursor-pointer padding-xs line-height-1 font-scale-s" v-on:click="this.nextSection()">
+        <button title="Next section" class="button-borderless cursor-pointer padding-xs line-height-1 font-scale-s" v-on:click="this.nextSection(); isVisible.sidebar = false">
           &darr;
         </button>
         <button title="Toggle navigation menu" class="button-borderless cursor-pointer padding-xs line-height-1 font-scale-s" v-on:click="isVisible.sidebar = !isVisible.sidebar">
@@ -71,6 +71,10 @@ export default {
         {
           id: 'techjourney',
           label: 'Technical Journey'
+        },
+        {
+          id: 'projects',
+          label: 'Projects'
         },
         {
           id: 'contact',

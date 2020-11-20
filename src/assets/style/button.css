@@ -218,10 +218,10 @@
   font-size: inherit;
   font-weight: 400;
   margin: 0;
-  margin-bottom: 0.5rem;
-  padding: 1.25rem;
-  padding-top: 0.75rem;
-  padding-bottom: 0.75rem;
+  margin-bottom: 0.25rem;
+  padding: 0rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   transition: var(--TRANSITION);
   
   -webkit-touch-callout: none; /* iOS Safari */
@@ -254,11 +254,13 @@
 .tabbar-vertical-item:focus {
   outline: none !important;
 }
+.tabbar-vertical-item-selected,
 .tabbar-vertical-item.router-link-active {
   color: var(--TABBAR-VERTICAL-ITEM-FG-COLOR-SELECTED);
   background: var(--TABBAR-VERTICAL-ITEM-BG-COLOR-SELECTED);
   border-color: var(--TABBAR-VERTICAL-ITEM-BORDER-COLOR-SELECTED);
   box-shadow: var(--BUTTON-BOX-SHADOW);
+  font-weight: 700;
   transition: var(--TRANSITION);
 }
 
