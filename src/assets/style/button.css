@@ -24,8 +24,8 @@
   font-size: inherit;
   margin: 0;
   padding: 1rem;
-  padding-top: 0.325rem;
-  padding-bottom: 0.325rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   transition: var(--TRANSITION);
   
   -webkit-touch-callout: none; /* iOS Safari */
@@ -72,6 +72,29 @@
 }
 .button-borderless:hover img {
     filter: none;
+}
+
+.button-hv-reveal {
+  color: var(--FG-COLOR) !important;
+  background: none !important;
+  border-width: 0 !important;
+  box-shadow: none !important;
+  font-size: inherit;
+  margin: 0;
+  padding: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  transition: var(--TRANSITION);
+}
+.button-hv-reveal:hover {
+  color: var(--BG-COLOR) !important;
+  background: var(--ACCENT-PRIMARY-COLOR) !important;
+  transition: var(--TRANSITION);
+}
+.button-hv-reveal:active {
+  color: var(--BG-COLOR) !important;
+  background: var(--FG-COLOR) !important;
+  transition: var(--TRANSITION);
 }
 
 .button-disabled, button:disabled,
@@ -135,8 +158,8 @@
   font-size: inherit;
   margin: 0;
   padding: 1rem;
-  padding-top: 0.325rem;
-  padding-bottom: 0.325rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   transition: var(--TRANSITION);
   
   -webkit-touch-callout: none; /* iOS Safari */

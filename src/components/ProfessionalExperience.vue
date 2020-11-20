@@ -10,17 +10,17 @@
           <button v-for="pointId in Object.keys(this.sections)" v-bind:key="`timeline-point-${pointId}`" class="timeline-point" v-bind:class="(Number(pointId) === state.currentSectionId) ? 'button-selected timeline-point-selected' : ''" v-on:mouseover="this.showTooltip(Number(pointId))" v-on:mouseout="this.hideTooltip()" v-on:click="this.setCurrentSection(Number(pointId))"></button>
         </div>
         <div class="hstack hstack-space-between align-center margin-xl-top">
-          <button class="button-borderless cursor-pointer flex-inline flex-flow-row align-center justify-center padding-none line-height-1 font-scale-l" v-on:click="this.setCurrentSectionPrevious()">
-            <span>&#10094;</span>
-            <span class="padding-xs">Previous</span>
+          <button class="button-hv-reveal cursor-pointer flex-inline flex-flow-row align-center justify-center" v-on:click="this.setCurrentSectionPrevious()">
+            <span class="margin-xs-right">&#10094;</span>
+            <span>Previous</span>
           </button>
-          <button class="button-borderless cursor-pointer flex-inline flex-flow-row align-center justify-center padding-none line-height-1 font-scale-l" v-on:click="this.setCurrentSectionNext()">
-            <span class="padding-xs">Next</span>
-            <span>&#10095;</span>
+          <button class="button-hv-reveal cursor-pointer flex-inline flex-flow-row align-center justify-center" v-on:click="this.setCurrentSectionNext()">
+            <span>Next</span>
+            <span class="margin-xs-left">&#10095;</span>
           </button>
         </div>
       </div>
-      <hr class="margin-l-top margin-none-bottom" />
+      <hr class="margin-s-top margin-none-bottom" />
       <transition name="fade">
         <div v-show="isVisible.timelineSection === true" class="grid grid-col-1 grid-gap-xl align-center justify-center width-full margin-auto-horizontal padding-m">
           <div class="grid-item flex-inline flex-flow-column aligh-center justify-center">

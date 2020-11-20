@@ -1,25 +1,25 @@
 <template>
   <div class="z-index-200 position-fixed anchor-right width-auto noselect" v-bind:class="isVisible.sidebar === true ? (isMobile === true ? 'width-full height-full' : 'height-auto') : (isMobile === true ? 'width-full height-auto' : 'height-auto')">
     <div class="vstack height-full align-end">
-      <div class="nav-translucent z-index-200 grid grid-auto-flow-column grid-gap-xl align-center justify-end padding-s" v-bind:class="isMobile === true ? 'nav nav-border-bottom width-full margin-none font-scale-xl' : 'card width-auto margin-s'">
-        <button title="Back to top" class="button-borderless cursor-pointer padding-none line-height-1 font-scale-s" v-on:click="this.goToSection('top')">
-          &UpArrowBar;
+      <div class="nav-translucent z-index-200 grid grid-auto-flow-column grid-gap-xl align-center padding-xs-top padding-xs-bottom" v-bind:class="isMobile === true ? 'nav nav-border-bottom justify-space-between width-full margin-none padding-m-left padding-m-right font-scale-xl' : 'card nav-shadow justify-end width-auto margin-s padding-s-left padding-s-right'">
+        <button title="Back to top" class="button-borderless cursor-pointer padding-xs line-height-1 font-scale-s" v-on:click="this.goToSection('top')">
+          TOP
         </button>
-        <button title="Previous section" class="button-borderless cursor-pointer padding-none line-height-1 font-scale-s" v-on:click="this.previousSection()">
+        <button title="Previous section" class="button-borderless cursor-pointer padding-xs line-height-1 font-scale-s" v-on:click="this.previousSection()">
           &uarr;
         </button>
-        <button title="Next section" class="button-borderless cursor-pointer padding-none line-height-1 font-scale-s" v-on:click="this.nextSection()">
+        <button title="Next section" class="button-borderless cursor-pointer padding-xs line-height-1 font-scale-s" v-on:click="this.nextSection()">
           &darr;
         </button>
-        <button title="Toggle navigation menu" class="button-borderless cursor-pointer padding-none line-height-1 font-scale-s" v-on:click="isVisible.sidebar = !isVisible.sidebar">
+        <button title="Toggle navigation menu" class="button-borderless cursor-pointer padding-xs line-height-1 font-scale-s" v-on:click="isVisible.sidebar = !isVisible.sidebar">
           <span v-if="isVisible.sidebar === false">&#9776;</span>
           <span v-else>&#10005;</span>
         </button>
       </div>
       <transition v-bind:name="isMobile === true ? 'fade' : 'slide'">
-        <div v-if="isVisible.sidebar === true" class="card-list width-full" v-bind:class="isMobile === true ? 'nav-translucent vstack align-center justify-center width-full height-full font-scale-xl' : 'card width-auto margin-s-right'">
+        <div v-if="isVisible.sidebar === true" class="card-list nav-translucent width-full" v-bind:class="isMobile === true ? 'vstack align-center justify-center width-full height-full font-scale-xl' : 'card width-auto margin-s-right'">
           <ul>
-            <li v-for="item in this.sections" v-bind:key="item.id" v-show="!item.hide" class="cursor-pointer" v-bind:class="isMobile === true ? 'width-full padding-s hstack align-center justify-center' : 'padding-l-left padding-m-right padding-xs-top padding-xs-bottom hstack align-end justify-center'" v-on:click="this.goToSection(item.id); isVisible.sidebar = false">
+            <li v-for="item in this.sections" v-bind:key="item.id" v-show="!item.hide" class="cursor-pointer" v-bind:class="isMobile === true ? 'width-full padding-s hstack align-center justify-center' : 'padding-m-left padding-m-right padding-xs-top padding-xs-bottom hstack align-end justify-center'" v-on:click="this.goToSection(item.id); isVisible.sidebar = false">
               {{ item.label }}
             </li>
           </ul>
@@ -123,17 +123,20 @@ button {
 }
 button:hover {
   color: var(--ACCENT-PRIMARY-COLOR) !important;
-  transform: scale(1.325) translateY(-5%);
+  transform: scale(1.125) translateY(-5%);
 }
 button:active {
-  transform: scale(1) translateY(0%);
+  transform: scale(0.96) translateY(0%);
 }
 
 .card-list li {
+  border-radius: 0;
   font-family: var(--FONT-FAMILY-HEADER);
+  transform: scale(1);
 }
 .card-list li:active {
-  filter: brightness(0.125) contrast(0.125);
+  border-radius: var(--CARD-BORDER-RADIUS);
+  transform: scale(0.96);
 }
 
 .slide-enter-active,

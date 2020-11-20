@@ -220,14 +220,14 @@ hr {
     box-shadow: var(--NAVBAR-SHADOW);
 }
 .nav-shadow {
-    box-shadow: var(--NAVBAR-SHADOW);
+    box-shadow: var(--NAVBAR-SHADOW) !important;
 }
 .nav-gradient {
-    background: var(--NAVBAR-BG-COLOR-GRADIENT);
+    background: var(--NAVBAR-BG-COLOR-GRADIENT) !important;
 }
 .nav-translucent {
-    background: var(--NAVBAR-BG-COLOR-TRANSLUCENT);
-    backdrop-filter: blur(12px);
+    background: var(--NAVBAR-BG-COLOR-TRANSLUCENT) !important;
+    backdrop-filter: blur(12px) !important;
 }
 .nav-transparent {
     background: none !important;
@@ -377,7 +377,7 @@ hr {
 .timeline-point:hover,
 .timeline-point:active,
 .timeline-point:focus {
-    animation: timeline-point-throbber 2s infinite;
+    animation: timeline-point-throbber 1s alternate-reverse infinite;
     transition: var(--TRANSITION);
 }
 .timeline-point {
@@ -412,16 +412,12 @@ hr {
 
 @keyframes timeline-point-throbber {
     from {
-        box-shadow: 0px 0px 4px var(--ACCENT-PRIMARY-COLOR);
-        filter: blur(1px) drop-shadow(0px 0px 4px var(--ACCENT-PRIMARY-COLOR));
-        transform: scale(1.5);
-        transition: var(--TRANSITION);
+        box-shadow: 0px 0px 0px var(--ACCENT-PRIMARY-COLOR);
+        transform: scale(1.325);
     }
     to {
-        box-shadow: 0px 0px 128px var(--ACCENT-PRIMARY-COLOR);
-        filter: blur(0px);
-        transform: scale(1) drop-shadow(0px 0px 128px var(--ACCENT-PRIMARY-COLOR));
-        transition: var(--TRANSITION);
+        box-shadow: 0px 0px 16px var(--ACCENT-PRIMARY-COLOR);
+        transform: scale(1);
     }
 }
 

@@ -48,7 +48,6 @@ export default {
 @import './assets/style/button.css';
 @import './assets/style/form.css';
 @import './assets/style/card.css';
-@import './assets/style/fonts/fonts.css';
 @import './assets/style/themes/dark.css' all and (prefers-color-scheme: dark);
 @import './assets/style/themes/light.css' all and (prefers-color-scheme: light);
 /* @import './assets/style/themes/light.css'; */
