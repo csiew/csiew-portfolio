@@ -1,9 +1,8 @@
 <template>
-  <div class="section width-full text-align-center margin-auto-horizontal margin-xxl-bottom padding-xl padding-xxl-top padding-xxl-bottom">
-    <div class="section-header margin-xxl-top padding-xxl-bottom">
-      <img class="profile-img profile-img-xl nodrag noselect border-radius-100pct" alt="profile" v-bind:src="useAltProfile === false ? require('@/assets/images/profile_0.jpg') : require('@/assets/images/profile_1.jpg')" v-on:click="useAltProfile = !useAltProfile" />
-      <h1 class="flex-inline width-full justify-center align-center margin-xl-top margin-xl-bottom text-align-center">Clarence Siew</h1>
-      <button class="button-hv-reveal padding-l padding-m-top padding-m-bottom font-scale-xxl" v-on:click="this.scrollToAbout()">&darr;</button>
+  <div class="section width-full text-align-center margin-auto-horizontal margin-xl-bottom padding-l">
+    <div class="section-header hstack flex-flow-row-wrap align-center justify-center margin-xxl-top padding-xxl-bottom">
+      <img class="profile-img profile-img-l margin-l nodrag noselect border-radius-100pct" alt="profile" v-bind:src="useAltProfile === false ? require('@/assets/images/profile_0.jpg') : require('@/assets/images/profile_1.jpg')" v-on:click="useAltProfile = !useAltProfile" />
+      <h1 class="flex-inline width-auto justify-center align-center text-align-center">Clarence Siew</h1>
     </div>
   </div>
 </template>
@@ -14,19 +13,6 @@ export default {
   data() {
     return {
       useAltProfile: false
-    }
-  },
-  methods: {
-    scrollToAbout: function () {
-      try {
-        const el = document.getElementById('about');
-        el && el.scrollIntoView({
-          block: 'start',
-          behavior: 'smooth'
-        });
-      } catch (err) {
-        console.warn(err);
-      }
     }
   }
 }

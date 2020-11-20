@@ -22,19 +22,17 @@
       </div>
       <hr class="margin-s-top margin-none-bottom" />
       <transition name="fade">
-        <div v-show="isVisible.timelineSection === true" class="grid grid-col-1 grid-gap-xl align-center justify-center width-full margin-auto-horizontal padding-m">
-          <div class="grid-item flex-inline flex-flow-column aligh-center justify-center">
-            <div class="vstack align-center margin-xxl-bottom">
-              <div class="vstack align-center margin-s-bottom">
-                <h3 class="margin-xs-top margin-none-bottom line-height-1 text-color-accent-primary font-scale-xl">{{ currentSection.position }}</h3>
-                <h4 v-if="currentSection.company" class="margin-xs-top margin-none-bottom line-height-inherit">{{ currentSection.company }}</h4>
-              </div>
-              <span class="font-bold text-color-secondary">{{ currentSection.location }}</span>
-              <span class="font-scale-s text-color-secondary">{{ currentSection.yearRange }}</span>
+        <div v-show="isVisible.timelineSection === true" class="grid grid-col-1 grid-gap-xl align-center justify-center width-full height-full margin-auto-horizontal padding-m">
+          <div class="vstack align-center margin-l-bottom">
+            <div class="vstack align-center margin-s-bottom">
+              <h3 class="margin-xs-top margin-none-bottom line-height-1 text-color-accent-primary font-scale-xl">{{ currentSection.position }}</h3>
+              <h4 v-if="currentSection.company" class="margin-xs-top margin-none-bottom line-height-inherit">{{ currentSection.company }}</h4>
             </div>
-            <div class="grid grid-gap-s" v-bind:class="isMobile === true ? 'grid-col-1' : 'grid-col-auto-fill-320 grid-auto-rows-1fr'">
-              <div v-for="contentParagraph in currentSection.content" v-bind:key="contentParagraph[0] + contentParagraph.length" class="grid-item card padding-m padding-s-top padding-s-bottom" v-bind:class="isMobile === true ? '' : 'height-full'" v-html="this.formatMarkdown(contentParagraph)"></div>
-            </div>
+            <span class="font-bold text-color-secondary">{{ currentSection.location }}</span>
+            <span class="font-scale-s text-color-secondary">{{ currentSection.yearRange }}</span>
+          </div>
+          <div class="grid grid-gap-s" v-bind:class="isMobile === true ? 'grid-col-1' : 'grid-col-auto-fill-320 grid-auto-rows-1fr'">
+            <div v-for="contentParagraph in currentSection.content" v-bind:key="contentParagraph[0] + contentParagraph.length" class="grid-item card padding-m padding-s-top padding-s-bottom" v-bind:class="isMobile === true ? '' : 'height-full'" v-html="this.formatMarkdown(contentParagraph)"></div>
           </div>
         </div>
       </transition>

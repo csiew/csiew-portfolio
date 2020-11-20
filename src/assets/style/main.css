@@ -291,6 +291,10 @@ hr {
     transform: scale(1);
     transition: var(--TRANSITION);
 }
+.profile-img-xs {
+    width: 1.75rem;
+    height: 1.75rem;
+}
 .profile-img-s {
     width: 3rem;
     height: 3rem;
