@@ -17,7 +17,7 @@
         </button>
       </div>
       <transition v-bind:name="isMobile === true ? 'fade' : 'slide'">
-        <div v-if="isVisible.sidebar === true" class="card-list nav-translucent width-full" v-bind:class="isMobile === true ? 'vstack align-center justify-center width-full height-full font-scale-xl' : 'card width-auto margin-s-right'">
+        <div v-if="isVisible.sidebar === true" class="card-list width-full" v-bind:class="isMobile === true ? 'nav vstack align-center justify-center width-full height-full font-scale-l' : 'nav-translucent card width-auto margin-s-right'">
           <ul>
             <li v-for="item in this.sections" v-bind:key="item.id" v-show="!item.hide" class="cursor-pointer" v-bind:class="isMobile === true ? 'width-full padding-s hstack align-center justify-center' : 'padding-m-left padding-m-right padding-xs-top padding-xs-bottom hstack align-end justify-center'" v-on:click="this.goToSection(item.id); isVisible.sidebar = false">
               {{ item.label }}

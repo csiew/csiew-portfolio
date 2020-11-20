@@ -11,9 +11,14 @@
         <div v-for="item in projects" v-bind:key="item.id" class="project-tab tabbar-vertical-item margin-none padding-xs-top padding-xs-bottom padding-s-left padding-s-right text-align-center" v-bind:class="state.currentProjectId === item.id ? 'tabbar-vertical-item-selected' : ''" v-on:click="state.currentProjectId = item.id">{{ item.name }}</div>
       </div>
       <div class="grid-item vstack card width-full padding-m">
-        <span v-if="selectedProject.imgUrl" class="margin-s-bottom">
+        <div class="margin-s-bottom text-align-center">
+          <h3 class="margin-xs-top margin-none-bottom line-height-1 text-color-accent-primary font-scale-xxl">{{ selectedProject.name }}</h3>
+          <h4 class="margin-xs-top margin-none-bottom line-height-inherit">{{ selectedProject.timeRange }}</h4>
+        </div>
+        <hr class="margin-xs-top margin-xs-bottom" />
+        <div v-if="selectedProject.imgUrl" class="margin-s-top margin-s-bottom">
           <a v-bind:href="getProjectImgUrl(selectedProject.imgUrl)"><img v-bind:alt="selectedProject.imgUrl" class="card card-img" v-bind:src="getProjectImgUrl(selectedProject.imgUrl)" style="width: 100%; height: auto;" /></a>
-        </span>
+        </div>
         <div class="margin-s-bottom" v-html="this.formatMarkdown(selectedProject.description)"></div>
         <div class="grid grid-col-2 grid-gap-s width-full">
           <a class="button" v-bind:class="!selectedProject.url ? 'button-disabled' : ''" v-bind:href="selectedProject.url ? selectedProject.url : null" target="_blank" v-bind:title="selectedProject.url ? 'Visit project website' : 'Project does not have a website'">Website</a>
