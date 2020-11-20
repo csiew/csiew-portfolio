@@ -55,6 +55,7 @@
 .button:focus, button:focus {
   outline: none !important;
   border-color: var(--BUTTON-BORDER-COLOR-FOCUS) !important;
+  animation: button-throbber 1s alternate-reverse infinite !important;
 }
 .button-selected, .button-selected:hover {
   color: var(--BUTTON-FG-COLOR-SELECTED);
@@ -65,13 +66,13 @@
 }
 
 .button-borderless {
-    color: var(--FG-COLOR) !important;
-    background: none !important;
-    border-width: 0 !important;
-    box-shadow: none !important;
+  color: var(--FG-COLOR) !important;
+  background: none !important;
+  border-width: 0 !important;
+  box-shadow: none !important;
 }
 .button-borderless:hover img {
-    filter: none;
+  filter: none;
 }
 
 .button-hv-reveal {
@@ -123,6 +124,19 @@
 }
 .button-toolbar:active {
   background: var(--BUTTON-BG-COLOR-ACTIVE);
+}
+
+@keyframes button-throbber {
+  from {
+    color: var(--BUTTON-FG-COLOR);
+    background: var(--BUTTON-BG-COLOR);
+    box-shadow: var(--BUTTON-BOX-SHADOW-HOVER);
+  }
+  to {
+    color: var(--BUTTON-FG-COLOR-HOVER);
+    background: var(--BUTTON-BG-COLOR-HOVER);
+    box-shadow: var(--CARD-BOX-SHADOW);
+  }
 }
 
 .row .button, .row button {
