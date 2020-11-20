@@ -1,0 +1,40 @@
+[
+  {
+    "id": "trendmicro",
+    "position": "Student Intern",
+    "company": "Trend Labs (Trend Micro Philippines)",
+    "location": "Manila, Philippines",
+    "yearRange": "2013",
+    "content": [
+      "Developed a mobile game to celebrate the launch of Trend Micro's then-latest antivirus product.",
+      "Engaged with quality assurance engineers to test and debug pre-release software.",
+      "Reviewed and performed corrections to technical documentation."
+    ]
+  },
+  {
+    "id": "nab",
+    "position": "IBL Student Intern",
+    "company": "National Australia Bank",
+    "location": "Melbourne, VIC, Australia",
+    "yearRange": "July 2018 - December 2018",
+    "content": [
+      "Reviewed and uplifted legacy banking services by designing and implementing serverless microservices for internal banking processes using the Spring Framework and Amazon Web Services (AWS) products.",
+      "Developed dashboards for the monitoring of serverless microservices on AWS.",
+      "Uplifted internal quality assurance tools with a graphing library to represent calculation processes for debugging and validation.",
+      "Performed quality assurance by formulating use cases and implementing test cases.",
+      "Participated and facilitated agile ceremonies.",
+      "Standardised and wrote documentation for Git version control procedures for team workflow."
+    ]
+  },
+  {
+    "id": "consultant",
+    "position": "Consultant",
+    "location": "Melbourne, VIC, Australia",
+    "yearRange": "August 2020 - September 2020",
+    "content": [
+      "Reviewed and assessed an existing proof-of-concept project for a healthcare-related non-government organisation.",
+      "Reported issues relating to software architecture, user experience, and project management",
+      "Outlined potential pathways to realign project objectives with client's vision."
+    ]
+  }
+]

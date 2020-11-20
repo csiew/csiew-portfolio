@@ -7,7 +7,7 @@
       <div id="techJourneyTooltip" v-show="isVisible.tooltip === true" class="tooltip"></div>
       <div class="vstack width-full align-center justify-center margin-auto-horizontal padding-l-top padding-m-left padding-m-right">
         <div class="timeline width-full margin-l-left margin-l-right" v-on:mousemove="this.setTooltipPosition" v-on:mouseout="this.hideTooltip()">
-          <button v-for="pointId in Object.keys(this.sections)" v-bind:key="`timeline-point-${pointId}`" class="timeline-point" v-bind:class="(Number(pointId) === state.currentSectionId) ? 'button-selected timeline-point-selected' : ''" v-on:mouseover="this.showTooltip(Number(pointId))" v-on:mouseout="this.hideTooltip()" v-on:click="this.setCurrentSection(Number(pointId))"></button>
+          <button v-for="item in this.techjourney" v-bind:key="item.id" class="timeline-point" v-bind:class="(item.id === state.currentSectionId) ? 'button-selected timeline-point-selected' : ''" v-on:mouseover="this.showTooltip(item.id)" v-on:mouseout="this.hideTooltip()" v-on:click="this.setCurrentSection(item.id)"></button>
         </div>
         <div class="hstack hstack-space-between align-center margin-xl-top">
           <button class="button-hv-reveal cursor-pointer flex-inline flex-flow-row align-center justify-center" v-on:click="this.setCurrentSectionPrevious()">
@@ -22,18 +22,18 @@
       </div>
       <hr class="margin-s-top margin-none-bottom" />
       <transition name="fade">
-        <div v-show="isVisible.timelineSection === true" class="grid grid-gap-xl align-center justify-center width-full margin-auto-horizontal padding-m" v-bind:class="this.sections[state.currentSectionId].image ? 'grid-col-auto-fill-320' : 'grid-col-1'">
-          <div v-if="this.sections[state.currentSectionId].image && this.sections[state.currentSectionId].image.align === 'left'" class="grid-item vstack align-center justify-center">
-            <img v-bind:src="getImage(this.sections[state.currentSectionId].image.src)" class="grid-item card card-img width-full aligh-center justify-center noselect nodrag" v-bind:alt="this.sections[state.currentSectionId].image.alt" />
-            <div v-if="this.sections[state.currentSectionId].image.caption" class="caption width-full padding-s">{{ this.sections[state.currentSectionId].image.caption }}</div>
+        <div v-show="isVisible.timelineSection === true" class="grid grid-gap-xl align-center justify-center width-full margin-auto-horizontal padding-m" v-bind:class="currentSection.image ? 'grid-col-auto-fill-320' : 'grid-col-1'">
+          <div v-if="currentSection.image && currentSection.image.align === 'left'" class="grid-item vstack align-center justify-center">
+            <img v-bind:src="getImage(currentSection.image.src)" class="grid-item card card-img width-full aligh-center justify-center noselect nodrag" v-bind:alt="currentSection.image.alt" />
+            <div v-if="currentSection.image.caption" class="caption width-full padding-s">{{ currentSection.image.caption }}</div>
           </div>
           <div class="grid-item flex-inline flex-flow-column aligh-center justify-center">
-            <h3 class="margin-xs-top margin-xs-bottom line-height-inherit font-scale-xl">{{ this.sections[state.currentSectionId].title }}</h3>
-            <div v-for="contentParagraph in this.sections[state.currentSectionId].content" v-bind:key="contentParagraph[0] + contentParagraph.length" v-html="this.formatMarkdown(contentParagraph)"></div>
+            <h3 class="margin-xs-top margin-xs-bottom line-height-inherit font-scale-xl">{{ currentSection.title }}</h3>
+            <div v-for="contentParagraph in currentSection.content" v-bind:key="contentParagraph[0] + contentParagraph.length" v-html="this.formatMarkdown(contentParagraph)"></div>
           </div>
-          <div v-if="this.sections[state.currentSectionId].image && this.sections[state.currentSectionId].image.align === 'right'" class="grid-item vstack align-center justify-center">
-            <img v-bind:src="getImage(this.sections[state.currentSectionId].image.src)" class="grid-item card card-img width-full aligh-center justify-center noselect nodrag" v-bind:alt="this.sections[state.currentSectionId].image.alt" />
-            <div v-if="this.sections[state.currentSectionId].image.caption" class="caption width-full margin-xs-top padding-s">{{ this.sections[state.currentSectionId].image.caption }}</div>
+          <div v-if="currentSection.image && currentSection.image.align === 'right'" class="grid-item vstack align-center justify-center">
+            <img v-bind:src="getImage(currentSection.image.src)" class="grid-item card card-img width-full aligh-center justify-center noselect nodrag" v-bind:alt="currentSection.image.alt" />
+            <div v-if="currentSection.image.caption" class="caption width-full margin-xs-top padding-s">{{ currentSection.image.caption }}</div>
           </div>
         </div>
       </transition>
@@ -44,6 +44,7 @@
 <script>
 import marked from 'marked';
 import UserAgent from '@/utils/UserAgent.js';
+import techjourneyJSON from '@/assets/techjourney.json';
 
 export default {
   name: 'TechnicalJourney',
@@ -54,65 +55,22 @@ export default {
         timelineSection: false
       },
       state: {
-        currentSectionId: 0,
-        timelinePointHoverId: 0
+        currentSectionId: '',
+        timelinePointHoverId: ''
       },
       tooltipValue: '',
-      sections: {
-        0: {
-          title: 'The Beginning',
-          content: [
-            'I have a long-standing love for software development and user experience design from a young age.',
-            'At the age of 9, I started building interactive prototypes of desktop environments in PowerPoint.'
-          ],
-          image: {
-            src: 'powerpoint_2003.png',
-            alt: 'PowerPoint 2003',
-            align: 'right',
-            caption: 'Microsoft PowerPoint 2003'
-          }
-        },
-        1: {
-          title: 'Expanding Horizons',
-          content: [
-            'From the ages of 13 to 18, I expanded my work into actual operating systems.',
-            'During this time, I built illume OS and Antorca Linux. Both of which aimed to provide a minimalist and easy-to-use desktop experience for users who were looking into recycling old hardware.',
-            'I also started to get into basic web development and Python scripting to help create some utilities here and there.'
-          ],
-          image: {
-            src: 'projects/antorca_linux.png',
-            alt: 'Antorca Linux',
-            align: 'left',
-            caption: 'Antorca Linux desktop'
-          }
-        },
-        2: {
-          title: 'Full-stack Web Development',
-          content: [
-            'Through numerous uni assignments and projects, I delved into full stack development. I learned to work with the Spring Framework for backend services, and with React for web frontends. I also used MySQL and PostgreSQL for these projects.',
-            'Through my personal projects I have also been working with the Node.js runtime and Express.js framework for backend services, and Vue.js for web frontends. I have experimented with creating my own UI library for one of these projects in place of React or Vue.'
-          ],
-          image: {
-            src: 'projects/cast.png',
-            alt: 'Cast',
-            align: 'right',
-            caption: 'Cast podcast web app, originally built with my own custom frontend UI library but is currently being rewritten using Vue.js.'
-          }
-        },
-        3: {
-          title: 'Scripting and Mobile App Development',
-          content: [
-            'Along the way, I picked up numerous handy skills such as working with Python on larger-scale projects. I have used Python in a range of projects with something as simple as a basic content management system for my personal blog, to something with moderate complexity like a command-line podcast player, to something as complicated as a whole window manager (or desktop environment) for Linux.',
-            'I have also done some mobile app development. For a university assignment, I formulated, design, and built an iOS app that let users report incidents and delays on Melbourne\'s public transport network (it used the PTV APIs for the relevant data; it also used Google Firebase to store user data and perform authentication).'
-          ],
-          image: {
-            src: 'projects/biscuitwm.png',
-            alt: 'BiscuitWM',
-            align: 'left',
-            caption: 'BiscuitWM, a minimalist window manager for Linux-based operating systems written in Python.'
-          }
-        }
-      }
+      techjourney: []
+    }
+  },
+  computed: {
+    isMobile: function () {
+      return UserAgent.isMobile();
+    },
+    currentSection: function () {
+      return this.techjourney.find(x => x.id === this.state.currentSectionId);
+    },
+    currentIndex: function () {
+      return this.techjourney.findIndex(x => x.id === this.state.currentSectionId);
     }
   },
   methods: {
@@ -137,32 +95,31 @@ export default {
       }
     },
     setCurrentSectionPrevious: function () {
-      let sectionKeys = Object.keys(this.sections);
-      if (sectionKeys.includes(`${this.state.currentSectionId}`)) {
-        if (Number(this.state.currentSectionId) <= 0) {
-          this.setCurrentSection(sectionKeys.length - 1);
+      if (this.techjourney.find(x => x.id === this.state.currentSectionId)) {
+        if (this.currentIndex <= 0) {
+          this.setCurrentSection(this.techjourney[this.techjourney.length - 1].id);
         } else {
-          this.setCurrentSection(Number(this.state.currentSectionId) - 1);
+          this.setCurrentSection(this.techjourney[this.currentIndex - 1].id);
         }
       } else {
         console.log("Invalid index");
       }
     },
     setCurrentSectionNext: function () {
-      let sectionKeys = Object.keys(this.sections);
-      if (sectionKeys.includes(`${this.state.currentSectionId}`)) {
-        if (Number(this.state.currentSectionId) >= sectionKeys.length - 1) {
-          this.setCurrentSection(0);
+      if (this.techjourney.find(x => x.id === this.state.currentSectionId)) {
+        if (this.currentIndex >= this.techjourney.length - 1) {
+          this.setCurrentSection(this.techjourney[0].id);
         } else {
-          this.setCurrentSection(Number(this.state.currentSectionId) + 1);
+          this.setCurrentSection(this.techjourney[this.currentIndex + 1].id);
         }
       } else {
         console.log("Invalid index");
       }
     },
     showTooltip: function (sectionId) {
-      if (UserAgent.isMobile() === false) {
-        document.getElementById('techJourneyTooltip').innerHTML = this.sections[sectionId].title;
+      if (this.isMobile === false) {
+        const hoverSection = this.techjourney.find(x => x.id === sectionId);
+        document.getElementById('techJourneyTooltip').innerHTML = hoverSection.title;
         this.isVisible.tooltip = true;
       }
     },
@@ -190,9 +147,10 @@ export default {
       }
     }
   },
-  mounted: function () {
-    this.setCurrentSection(0);
+  beforeMount: function () {
     this.isVisible.timelineSection = true;
+    this.techjourney = techjourneyJSON;
+    this.state.currentSectionId = this.techjourney[0].id;
   }
 }
 </script>

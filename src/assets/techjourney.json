@@ -1,0 +1,59 @@
+[
+  {
+    "id": "beginning",
+    "title": "The Beginning",
+    "content": [
+      "I have a long-standing love for software development and user experience design from a young age.",
+      "At the age of 9, I started building interactive prototypes of desktop environments in PowerPoint."
+    ],
+    "image": {
+      "src": "powerpoint_2003.png",
+      "alt": "PowerPoint 2003",
+      "align": "right",
+      "caption": "Microsoft PowerPoint 2003"
+    }
+  },
+  {
+    "id": "expanding_horizons",
+    "title": "Expanding Horizons",
+    "content": [
+      "From the ages of 13 to 18, I expanded my work into actual operating systems.",
+      "During this time, I built illume OS and Antorca Linux. Both of which aimed to provide a minimalist and easy-to-use desktop experience for users who were looking into recycling old hardware.",
+      "I also started to get into basic web development and Python scripting to help create some utilities here and there."
+    ],
+    "image": {
+      "src": "projects/antorca_linux.png",
+      "alt": "Antorca Linux",
+      "align": "left",
+      "caption": "Antorca Linux desktop"
+    }
+  },
+  {
+    "id": "fullstack_webdev",
+    "title": "Full-stack Web Development",
+    "content": [
+      "Through numerous uni assignments and projects, I delved into full stack development. I learned to work with the Spring Framework for backend services, and with React for web frontends. I also used MySQL and PostgreSQL for these projects.",
+      "Through my personal projects I have also been working with the Node.js runtime and Express.js framework for backend services, and Vue.js for web frontends. I have experimented with creating my own UI library for one of these projects in place of React or Vue."
+    ],
+    "image": {
+      "src": "projects/cast.png",
+      "alt": "Cast",
+      "align": "right",
+      "caption": "Cast podcast web app, originally built with my own custom frontend UI library but is currently being rewritten using Vue.js."
+    }
+  },
+  {
+    "id": "scripting_and_mobile",
+    "title": "Scripting and Mobile App Development",
+    "content": [
+      "Along the way, I picked up numerous handy skills such as working with Python on larger-scale projects. I have used Python in a range of projects with something as simple as a basic content management system for my personal blog, to something with moderate complexity like a command-line podcast player, to something as complicated as a whole window manager (or desktop environment) for Linux.",
+      "I have also done some mobile app development. For a university assignment, I formulated, design, and built an iOS app that let users report incidents and delays on Melbourne's public transport network (it used the PTV APIs for the relevant data; it also used Google Firebase to store user data and perform authentication)."
+    ],
+    "image": {
+      "src": "projects/biscuitwm.png",
+      "alt": "BiscuitWM",
+      "align": "left",
+      "caption": "BiscuitWM, a minimalist window manager for Linux-based operating systems written in Python."
+    }
+  }
+]
