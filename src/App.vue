@@ -55,7 +55,7 @@ export default {
   methods: {
     helloIsVisible: function () {
       // Adapted from https://gist.github.com/jjmu15/8646226
-      var element = document.getElementById("top");
+      var element = document.getElementById("helloContent");
       var rect = element.getBoundingClientRect();
       this.isVisible.hello = (rect.bottom >= 0);
     },
