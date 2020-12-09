@@ -10,16 +10,16 @@
           <span v-else>&#10005;</span>
         </button>
       </div>
-      <transition v-bind:name="isMobile === true ? 'fade' : 'slide'">
-        <div v-if="isVisible.sidebar === true" class="overflow-y-auto" v-bind:class="isMobile === true ? 'nav vstack align-center justify-center width-full height-full padding-none font-scale-l' : 'nav-transparent nav-border-top width-auto'">
-          <div class="card-list padding-none" v-bind:class="isMobile === true ? 'width-full height-full margin-m-top margin-m-bottom' : ''">
+      <transition name="fade">
+        <div v-if="isVisible.sidebar === true" v-bind:class="isMobile === true ? 'nav vstack align-center justify-center width-full height-full padding-none font-scale-l' : 'nav-transparent nav-border-top width-auto'">
+          <div class="card-list overflow-y-auto" v-bind:class="isMobile === true ? 'width-full height-full padding-m-top padding-m-bottom' : ''">
             <ul v-bind:class="isMobile === true ? 'margin-auto-top margin-auto-bottom' : ''">
               <li v-for="item in this.sections" v-bind:key="item.id" v-show="!item.hide" class="cursor-pointer" v-bind:class="isMobile === true ? 'width-full padding-xs hstack align-center justify-center font-scale-l' : 'padding-m-left padding-s-right padding-xs-top padding-xs-bottom hstack align-end justify-center'" v-on:click="this.goToSection(item.id); isVisible.sidebar = false">
                 {{ item.label }}
               </li>
             </ul>
           </div>
-          <div v-bind:class="isMobile === true ? 'anchor-bottom' : 'nav-border-top'">
+          <div v-if="isMobile === false" class="nav-border-top">
             <div class="padding-s text-color-secondary" v-bind:class="isMobile === false ? 'width-max-240 margin-auto-left padding-xs-top padding-xs-bottom text-align-right font-scale-xs' : 'text-align-center font-scale-xxs'">
               This portfolio site was built using Vue.js and is deployed on Netlify. It uses custom CSS utilities inspired by Bootstrap and Tailwind CSS.
             </div>
@@ -157,21 +157,5 @@ button:active {
 .card-list li:active {
   border-radius: var(--CARD-BORDER-RADIUS);
   transform: scale(0.96);
-}
-
-.slide-enter-active,
-.slide-leave-active {
-  transition: all 0.25s ease-in-out;
-}
-.slide-enter-from,
-.slide-leave-to {
-  opacity: 0;
-  transform: translate(-5%, -50%) scale(1, 0) skew(-10deg);
-  filter: blur(25px);
-}
-.slide-enter-to {
-  opacity: 1;
-  transform: translate(0%, 0%) scale(1, 1) skew(0deg);
-  filter: blur(0px);
 }
 </style>
