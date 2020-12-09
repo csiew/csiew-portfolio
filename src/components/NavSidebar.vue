@@ -3,20 +3,27 @@
     <div class="vstack height-full align-end" v-bind:class="isMobile === true ? 'vstack-reverse' : 'card nav-translucent'">
       <div class="z-index-200 hstack align-center" v-bind:class="isMobile === true ? 'nav nav-border-top justify-space-between width-full font-scale-xl' : 'justify-end width-auto'">
         <transition name="fade">
-          <img v-show="helloIsVisible === false" class="grid-item profile-img profile-img-xs nav-shadow cursor-pointer border-radius-100pct margin-auto-vertical padding-none nodrag noselect" v-bind:class="isMobile === true ? 'margin-none-left margin-auto-right' : 'margin-s-left margin-xs-right'" alt="profile" title="Back to top" src="@/assets/images/profile_0.jpg" v-on:click="this.goToSection('top'); isVisible.sidebar = false" />
+          <img v-show="helloIsVisible === false" class="grid-item profile-img profile-img-xs nav-shadow cursor-pointer border-radius-100pct margin-auto-vertical padding-none nodrag noselect" v-bind:class="isMobile === true ? 'margin-s-left margin-auto-right' : 'margin-s-left margin-xs-right'" alt="profile" title="Back to top" src="@/assets/images/profile_0.jpg" v-on:click="this.goToSection('top'); isVisible.sidebar = false" />
         </transition>
-        <button title="Toggle navigation menu" class="grid-item button-borderless cursor-pointer padding-s padding-m-left padding-m-right line-height-1 font-scale-l" v-bind:class="isMobile === true ? 'margin-auto-left margin-none-right' : ''" v-on:click="isVisible.sidebar = !isVisible.sidebar">
+        <button title="Toggle navigation menu" class="grid-item button-borderless cursor-pointer padding-s line-height-1 font-scale-l" v-bind:class="isMobile === true ? 'margin-auto-left' : ''" v-on:click="isVisible.sidebar = !isVisible.sidebar">
           <span v-if="isVisible.sidebar === false">&#9776;</span>
           <span v-else>&#10005;</span>
         </button>
       </div>
       <transition v-bind:name="isMobile === true ? 'fade' : 'slide'">
-        <div v-if="isVisible.sidebar === true" class="card-list" v-bind:class="isMobile === true ? 'nav vstack align-center justify-center width-full height-full font-scale-l' : 'nav-transparent nav-border-top width-auto'">
-          <ul>
-            <li v-for="item in this.sections" v-bind:key="item.id" v-show="!item.hide" class="cursor-pointer" v-bind:class="isMobile === true ? 'width-full padding-s hstack align-center justify-center' : 'padding-xl-left padding-m-right padding-xs-top padding-xs-bottom hstack align-end justify-center'" v-on:click="this.goToSection(item.id); isVisible.sidebar = false">
-              {{ item.label }}
-            </li>
-          </ul>
+        <div v-if="isVisible.sidebar === true" class="overflow-y-auto" v-bind:class="isMobile === true ? 'nav vstack align-center justify-center width-full height-full padding-none font-scale-l' : 'nav-transparent nav-border-top width-auto'">
+          <div class="card-list padding-none" v-bind:class="isMobile === true ? 'width-full height-full margin-m-top margin-m-bottom' : ''">
+            <ul v-bind:class="isMobile === true ? 'margin-auto-top margin-auto-bottom' : ''">
+              <li v-for="item in this.sections" v-bind:key="item.id" v-show="!item.hide" class="cursor-pointer" v-bind:class="isMobile === true ? 'width-full padding-xs hstack align-center justify-center font-scale-l' : 'padding-m-left padding-s-right padding-xs-top padding-xs-bottom hstack align-end justify-center'" v-on:click="this.goToSection(item.id); isVisible.sidebar = false">
+                {{ item.label }}
+              </li>
+            </ul>
+          </div>
+          <div v-bind:class="isMobile === true ? 'anchor-bottom' : 'nav-border-top'">
+            <div class="padding-s text-color-secondary" v-bind:class="isMobile === false ? 'width-max-240 margin-auto-left padding-xs-top padding-xs-bottom text-align-right font-scale-xs' : 'text-align-center font-scale-xxs'">
+              This portfolio site was built using Vue.js and is deployed on Netlify. It uses custom CSS utilities inspired by Bootstrap and Tailwind CSS.
+            </div>
+          </div>
         </div>
       </transition>
     </div>
@@ -159,10 +166,12 @@ button:active {
 .slide-enter-from,
 .slide-leave-to {
   opacity: 0;
-  transform: translateY(-50%) scale(0) skew(-25deg, 25deg);
+  transform: translate(-5%, -50%) scale(1, 0) skew(-10deg);
+  filter: blur(25px);
 }
 .slide-enter-to {
   opacity: 1;
-  transform: translateY(0%) scale(1) skew(0deg, 0deg);
+  transform: translate(0%, 0%) scale(1, 1) skew(0deg);
+  filter: blur(0px);
 }
 </style>

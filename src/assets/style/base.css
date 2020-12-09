@@ -96,6 +96,8 @@
 .height-auto { height: auto !important; }
 .height-full { height: 100% !important; }
 
+.height-max-full { max-height: 100% !important; }
+
 .flex-inline { display: inline-flex !important; }
 .flex-flow-row { flex-flow: row !important; }
 .flex-flow-row-wrap { flex-flow: row wrap !important; }

@@ -14,8 +14,8 @@
           <span v-if="item.degree" class="font-bold text-color-secondary">{{ item.degree }}</span>
           <div class="margin-xs-top">{{ item.dateRange }}</div>
         </div>
-        <div v-if="item.awards" class="card width-full margin-xs-top margin-s-bottom padding-m padding-s-top padding-s-bottom font-scale-s">
-          <h5 class="margin-xs-top margin-s-bottom font-scale-m">Awards / Scholarships</h5>
+        <div v-if="item.awards" class="card width-full margin-xs-top margin-s-bottom padding-m padding-s-top padding-s-bottom">
+          <h5 class="margin-xs-top margin-s-bottom font-scale-m text-color-secondary">Awards / Scholarships</h5>
           <ul>
             <li v-for="award in item.awards" v-bind:key="award">{{ award }}</li>
           </ul>
