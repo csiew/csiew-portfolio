@@ -6,15 +6,15 @@
     <div class="grid grid-col-1 grid-gap-l width-full width-max-1024 margin-auto-horizontal">
       <div id="proExpTooltip" v-show="isVisible.tooltip === true" class="tooltip"></div>
       <div class="vstack width-full align-center justify-center margin-auto-horizontal padding-l-top padding-m-left padding-m-right">
-        <div class="timeline width-full margin-l-left margin-l-right" v-on:mousemove="this.setTooltipPosition" v-on:mouseout="this.hideTooltip()">
-          <button v-for="item in this.experience" v-bind:key="item.id" class="timeline-point" v-bind:class="(item.id === state.currentSectionId) ? 'button-selected timeline-point-selected' : ''" v-on:mouseover="this.showTooltip(item.id)" v-on:mouseout="this.hideTooltip()" v-on:click="this.setCurrentSection(item.id)"></button>
+        <div class="timeline width-full margin-l-left margin-l-right" v-on:mousemove="setTooltipPosition" v-on:mouseout="hideTooltip()">
+          <button v-for="item in experience" v-bind:key="item.id" class="timeline-point" v-bind:class="(item.id === state.currentSectionId) ? 'button-selected timeline-point-selected' : ''" v-on:mouseover="showTooltip(item.id)" v-on:mouseout="hideTooltip()" v-on:click="setCurrentSection(item.id)"></button>
         </div>
         <div class="hstack hstack-space-between align-center margin-xl-top">
-          <button class="button-hv-reveal cursor-pointer flex-inline flex-flow-row align-center justify-center" v-on:click="this.setCurrentSectionPrevious()">
+          <button class="button-hv-reveal cursor-pointer flex-inline flex-flow-row align-center justify-center" v-on:click="setCurrentSectionPrevious()">
             <span class="margin-xs-right">&#10094;</span>
             <span>Previous</span>
           </button>
-          <button class="button-hv-reveal cursor-pointer flex-inline flex-flow-row align-center justify-center" v-on:click="this.setCurrentSectionNext()">
+          <button class="button-hv-reveal cursor-pointer flex-inline flex-flow-row align-center justify-center" v-on:click="setCurrentSectionNext()">
             <span>Next</span>
             <span class="margin-xs-left">&#10095;</span>
           </button>
@@ -32,7 +32,7 @@
             <span class="font-scale-s text-color-secondary">{{ currentSection.yearRange }}</span>
           </div>
           <div class="grid grid-gap-s" v-bind:class="isMobile === true ? 'grid-col-1' : 'grid-col-auto-fill-320 grid-auto-rows-1fr'">
-            <div v-for="contentParagraph in currentSection.content" v-bind:key="contentParagraph[0] + contentParagraph.length" class="grid-item card padding-m padding-s-top padding-s-bottom" v-bind:class="isMobile === true ? '' : 'height-full'" v-html="this.formatMarkdown(contentParagraph)"></div>
+            <div v-for="contentParagraph in currentSection.content" v-bind:key="contentParagraph[0] + contentParagraph.length" class="grid-item card padding-m padding-s-top padding-s-bottom" v-bind:class="isMobile === true ? '' : 'height-full'" v-html="formatMarkdown(contentParagraph)"></div>
           </div>
         </div>
       </transition>

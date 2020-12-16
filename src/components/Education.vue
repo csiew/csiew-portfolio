@@ -4,7 +4,7 @@
       <h2>Education</h2>
     </div>
     <div class="grid grid-col-1 grid-gap-m width-full width-max-800 margin-auto-horizontal">
-      <div v-for="item in this.education" v-bind:key="item.id" class="grid-item vstack width-full padding-s-top padding-s-bottom">
+      <div v-for="item in education" v-bind:key="item.id" class="grid-item vstack width-full padding-s-top padding-s-bottom">
         <div class="flex-inline flex-flow-row-wrap align-center justify-space-between width-full margin-xs-bottom font-scale-xs text-color-secondary text-transform-uppercase">
           <span class="font-bold">{{ item.level }}</span>
           <span>{{ item.location }}</span>
