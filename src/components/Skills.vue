@@ -11,7 +11,7 @@
       <span v-if="filterTerm.length > 0">
         <h3>Results ({{ result.length }} items)</h3>
         <div class="grid grid-gap-m grid-col-1 grid-col-auto-fit-640">
-          <div class="grid-item list-freestyle">
+          <div class="grid-item list-freestyle card card-inset padding-s bg-color-secondary">
             <ul>
               <li v-for="item in result" v-bind:key="item">{{ item }}</li>
             </ul>
@@ -21,22 +21,22 @@
       <span v-else>
         <h3>Programming Languages</h3>
         <div class="grid grid-gap-m grid-col-1 grid-col-auto-fit-640">
-          <div class="grid-item list-freestyle">
+          <div class="grid-item list-freestyle card card-inset padding-s bg-color-secondary">
             <ul>
               <li v-for="item in skills['programmingLangs']" v-bind:key="item">{{ item }}</li>
             </ul>
           </div>
         </div>
         <hr />
-        <h3>Frameworks</h3>
+        <h3>Frameworks and Libraries</h3>
         <div class="grid grid-gap-m grid-col-2 grid-col-auto-fit-640">
-          <div class="grid-item list-freestyle">
+          <div class="grid-item list-freestyle card card-inset padding-s bg-color-secondary">
             <h4>Frontend</h4>
             <ul>
               <li v-for="item in skills['frameworks']['frontend']" v-bind:key="item">{{ item }}</li>
             </ul>
           </div>
-          <div class="grid-item list-freestyle">
+          <div class="grid-item list-freestyle card card-inset padding-s bg-color-secondary">
             <h4>Backend</h4>
             <ul>
               <li v-for="item in skills['frameworks']['backend']" v-bind:key="item">{{ item }}</li>
@@ -46,19 +46,19 @@
         <hr />
         <h3>Infrastructure</h3>
         <div class="grid grid-gap-m grid-col-2 grid-col-auto-fit-640">
-          <div class="grid-item list-freestyle">
+          <div class="grid-item list-freestyle card card-inset padding-s bg-color-secondary">
             <h4>Database</h4>
             <ul>
               <li v-for="item in skills['infrastructure']['database']" v-bind:key="item">{{ item }}</li>
             </ul>
           </div>
-          <div class="grid-item list-freestyle">
+          <div class="grid-item list-freestyle card card-inset padding-s bg-color-secondary">
             <h4>Cloud</h4>
             <ul>
               <li v-for="item in skills['infrastructure']['cloud']" v-bind:key="item">{{ item }}</li>
             </ul>
           </div>
-          <div class="grid-item list-freestyle">
+          <div class="grid-item list-freestyle card card-inset padding-s bg-color-secondary">
             <h4>Continuous Integration</h4>
             <ul>
               <li v-for="item in skills['infrastructure']['ci']" v-bind:key="item">{{ item }}</li>
