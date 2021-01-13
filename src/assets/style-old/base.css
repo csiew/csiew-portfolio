@@ -70,6 +70,8 @@
 .width-max-320 { max-width: 320px !important; }
 .width-max-380 { max-width: 380px !important; }
 .width-max-480 { max-width: 480px !important; }
+.width-max-540 { max-width: 540px !important; }
+.width-max-600 { max-width: 600px !important; }
 .width-max-640 { max-width: 640px !important; }
 .width-max-720 { max-width: 720px !important; }
 .width-max-780 { max-width: 720px !important; }
@@ -94,6 +96,8 @@
 .height-auto { height: auto !important; }
 .height-full { height: 100% !important; }
 
+.height-max-full { max-height: 100% !important; }
+
 .flex-inline { display: inline-flex !important; }
 .flex-flow-row { flex-flow: row !important; }
 .flex-flow-row-wrap { flex-flow: row wrap !important; }
@@ -112,18 +116,27 @@
 
 .grid { display: grid !important; }
 
+.grid-auto-rows-1fr { grid-auto-rows: 1fr !important; }
 .grid-auto-flow-dense { grid-auto-flow: dense !important; }
 .grid-auto-flow-row { grid-auto-flow: row !important; }
 .grid-auto-flow-column { grid-auto-flow: column !important; }
 
+.grid-col-auto { grid-template-columns: auto !important; }
+.grid-col-1fr { grid-template-columns: 1fr !important; }
+.grid-col-max-content { grid-template-columns: max-content !important; }
+
 .grid-col-auto-fill-128 { grid-template-columns: repeat(auto-fill, minmax(128px, 1fr)) !important; }
 .grid-col-auto-fill-256 { grid-template-columns: repeat(auto-fill, minmax(256px, 1fr)) !important; }
+.grid-col-auto-fill-280 { grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)) !important; }
+.grid-col-auto-fill-300 { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important; }
 .grid-col-auto-fill-320 { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)) !important; }
 .grid-col-auto-fill-480 { grid-template-columns: repeat(auto-fill, minmax(480px, 1fr)) !important; }
 .grid-col-auto-fill-640 { grid-template-columns: repeat(auto-fill, minmax(640px, 1fr)) !important; }
 
 .grid-col-auto-fit-128 { grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)) !important; }
 .grid-col-auto-fit-256 { grid-template-columns: repeat(auto-fit, minmax(256px, 1fr)) !important; }
+.grid-col-auto-fit-280 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important; }
+.grid-col-auto-fit-300 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important; }
 .grid-col-auto-fit-320 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important; }
 .grid-col-auto-fit-480 { grid-template-columns: repeat(auto-fit, minmax(480px, 1fr)) !important; }
 .grid-col-auto-fit-640 { grid-template-columns: repeat(auto-fit, minmax(640px, 1fr)) !important; }
@@ -167,6 +180,7 @@
 
 .line-height-0 { line-height: 0 !important; }
 .line-height-1 { line-height: 1 !important; }
+.line-height-inherit { line-height: inherit !important;}
 
 .anchor-top { top: 0 !important; }
 .anchor-bottom { bottom: 0 !important; }
@@ -179,6 +193,10 @@
 .margin-auto-top { margin-top: auto !important; }
 .margin-auto-bottom { margin-bottom: auto !important; }
 
+.margin-auto-vertical {
+    margin-top: auto !important;
+    margin-bottom: auto !important;
+}
 .margin-auto-horizontal {
     margin-left: auto !important;
     margin-right: auto !important;
@@ -278,10 +296,8 @@
 
 .text-line-height-1 { line-height: 1 !important; }
 
-.overflow-auto { overflow: auto !important; }
 .overflow-x-auto { overflow-x: auto !important; }
 .overflow-y-auto { overflow-y: auto !important; }
-.overflow-hidden { overflow: hidden !important; }
 .overflow-x-hidden { overflow-x: hidden !important; }
 .overflow-y-hidden { overflow-y: hidden !important; }
 
@@ -356,12 +372,17 @@
     margin-bottom: 8px;
 }
 .vstack-height-full {
+    overflow-x: hidden;
+    overflow-y: auto;
     max-height: 100vh;
     height: 100%;
 }
 .vstack-space-between {
     align-items: center;
     justify-content: space-between;
+}
+.vstack-reverse {
+    flex-flow: column-reverse;
 }
 
 .list-no-style {
@@ -377,6 +398,9 @@
     margin-bottom: 0;
 }
 
+.border-none {
+    border: none !important;
+}
 .border-radius-100pct {
     border-radius: 100% !important;
 }
@@ -386,21 +410,31 @@
   word-break: break-word !important;
 }
 
+.text-transform-none { text-transform: none !important; }
+.text-transform-uppercase { text-transform: uppercase !important; }
+
 .text-color-accent-primary { color: var(--ACCENT-PRIMARY-COLOR) !important; }
 .text-color-accent-secondary { color: var(--ACCENT-SECONDARY-COLOR) !important; }
 .text-color-primary { color: var(--FG-COLOR) !important; }
 .text-color-secondary { color: var(--FG-SECONDARY-COLOR) !important; }
+.bg-color-none { background: none !important; }
 .bg-color-primary { background: var(--BG-COLOR) !important; }
 .bg-color-secondary { background: var(--BG-SECONDARY-COLOR) !important; }
 .bg-color-tertiary { background: var(--BG-TERTIARY-COLOR) !important; }
 
 .invert {
+    filter: invert(1) !important;
+    -webkit-filter: invert(1) !important;
+}
+.invert-dark-mode {
     filter: invert(0) !important;
     -webkit-filter: invert(0) !important;
 }
-.dark-mode .invert {
-    filter: invert(1) !important;
-    -webkit-filter: invert(1) !important;
+@media all and (prefers-color-scheme: dark) {
+    .invert-dark-mode {
+        filter: invert(1) !important;
+        -webkit-filter: invert(1) !important;
+    }
 }
 
 .opacity-25 { opacity: 25% !important; }
@@ -418,22 +452,12 @@
 .cursor-pointer {
     cursor: pointer;
 }
-.pointer-events-none {
-    pointer-events: none !important;
-}
+.pointer-events-none { pointer-events: none !important; }
+.pointer-events-auto { pointer-events: auto !important; }
 
 .shadow-none {
     box-shadow: none !important;
 }
-
-.border-radius-3 { border-radius: 3px !important; }
-.border-radius-5 { border-radius: 5px !important; }
-.border-radius-8 { border-radius: 8px !important; }
-.border-radius-11 { border-radius: 11px !important; }
-.border-radius-16 { border-radius: 16px !important; }
-.border-radius-32 { border-radius: 32px !important; }
-.border-radius-64 { border-radius: 64px !important; }
-.border-radius-full { border-radius: 100% !important; }
 
 /* From: https://stackoverflow.com/a/16771693 */
 .animate-rotate {

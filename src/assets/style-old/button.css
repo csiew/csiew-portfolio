@@ -1,5 +1,5 @@
 .button, button, .tabbar, .tabbar-item, .tabbar-vertical-item, .list-freestyle li {
-  font-family: var(--FONT-FAMILY-BODY);
+  font-family: var(--FONT-FAMILY-HEADER);
   font-weight: bold;
 }
 
@@ -23,7 +23,7 @@
   box-shadow: var(--BUTTON-BOX-SHADOW);
   font-size: inherit;
   margin: 0;
-  padding: 0.75rem;
+  padding: 1rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   transition: var(--TRANSITION);
@@ -65,9 +65,6 @@
 }
 
 .button-borderless {
-  padding: 0.75rem !important;
-  padding-top: 0.5rem !important;
-  padding-bottom: 0.5rem !important;
   color: var(--FG-COLOR) !important;
   background: none !important;
   border-width: 0 !important;
@@ -83,6 +80,10 @@
   border-width: 0 !important;
   box-shadow: none !important;
   font-size: inherit;
+  margin: 0;
+  padding: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   transition: var(--TRANSITION);
 }
 .button-hv-reveal:hover {
@@ -284,13 +285,11 @@
   supported by Chrome, Edge, Opera and Firefox */
 }
 .tabbar-item:first-child {
-  padding-left: 1.125rem !important;
   border-left-width: var(--BUTTON-BORDER-WIDTH);
   border-top-left-radius: var(--BUTTON-BORDER-RADIUS);
   border-bottom-left-radius: var(--BUTTON-BORDER-RADIUS);
 }
 .tabbar-item:last-child {
-  padding-right: 1.125rem !important;
   border-right-width: var(--BUTTON-BORDER-WIDTH);
   border-top-right-radius: var(--BUTTON-BORDER-RADIUS);
   border-bottom-right-radius: var(--BUTTON-BORDER-RADIUS);
@@ -334,9 +333,9 @@
   font-weight: 400;
   margin: 0;
   margin-bottom: 0.25rem;
-  padding: 0.5rem;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
+  padding: 0rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   transition: var(--TRANSITION);
   
   -webkit-touch-callout: none; /* iOS Safari */
@@ -441,9 +440,9 @@
   border-radius: var(--TOGGLE-SWITCH-BORDER-RADIUS);
   box-shadow: var(--TOGGLE-SWITCH-BOX-SHADOW);
   cursor: pointer;
-  width: 3rem;
-  height: 1rem;
-  padding: 0;
+  width: 3.5rem;
+  height: auto;
+  padding: 0.25rem;
   transition: var(--TRANSITION);
 }
 .toggle-switch:hover {
@@ -464,12 +463,11 @@
 }
 .toggle-switch-knob {
   z-index: 20;
-  color: var(--TOGGLE-SWITCH-KNOB-FG-COLOR);
   background: var(--TOGGLE-SWITCH-KNOB-BG-COLOR);
   border-width: var(--BUTTON-BORDER-WIDTH);
   border-style: solid;
   border-color: var(--TOGGLE-SWITCH-BORDER-COLOR);
-  border-radius: var(--TOGGLE-SWITCH-KNOB-BORDER-RADIUS);
+  border-radius: var(--TOGGLE-SWITCH-BORDER-RADIUS);
   box-shadow: var(--TOGGLE-SWITCH-KNOB-BOX-SHADOW);
   width: 1.5rem;
   height: 1.5rem;

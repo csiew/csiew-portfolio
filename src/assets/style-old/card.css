@@ -80,8 +80,6 @@
     background: var(--CARD-LIST-ITEM-BG-COLOR) !important;
 }
 
-.border-radius-card { border-radius: var(--CARD-BORDER-RADIUS); }
-
 .card-marked {
   border-left: 0.25rem solid var(--ACCENT-PRIMARY-COLOR);
   box-shadow: none;
