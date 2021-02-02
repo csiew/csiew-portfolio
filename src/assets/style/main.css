@@ -138,6 +138,8 @@ hr {
 } */
 
 .footer {
+    color: var(--FG-COLOR);
+    background: var(--BG-SECONDARY-COLOR);
     position: relative;
     display: inline-flex;
     align-items: center;

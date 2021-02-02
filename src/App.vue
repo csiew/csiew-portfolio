@@ -73,7 +73,7 @@ export default {
 @import './assets/style/form.css';
 @import './assets/style/card.css';
 @import './assets/style/themes/light.css';
-@import './assets/style/themes/dark.css' all and (prefers-color-scheme: dark);
+@import './assets/style/themes/dark.css';
 @import './assets/style/fonts/fonts.css';
 
 .section {

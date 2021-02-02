@@ -20,7 +20,7 @@ export default {
 
 <style scoped>
 h1, h2, h3 {
-  letter-spacing: -0.0625rem !important;
+  letter-spacing: -0.25rem !important;
 }
 h1 {
   color: var(--FG-COLOR);

@@ -39,6 +39,11 @@
             "Travis CI",
             "Netlify",
             "GoCD"
+        ],
+        "operatingSystems": [
+            "Linux",
+            "macOS",
+            "Windows"
         ]
     }
 }
