@@ -19,9 +19,6 @@ export default {
 </script>
 
 <style scoped>
-h1, h2, h3 {
-  letter-spacing: -0.25rem !important;
-}
 h1 {
   color: var(--FG-COLOR);
   font-size: 12vmin !important;

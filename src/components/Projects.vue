@@ -1,17 +1,17 @@
 <template>
-  <div class="section margin-auto-horizontal padding-xl padding-xxl-top padding-xxl-bottom">
+  <div class="section vstack align-center justify-start margin-auto-horizontal padding-xl padding-xxl-top padding-xxl-bottom">
     <div class="section-header margin-xxl-bottom">
       <h2>Projects</h2>
     </div>
-    <div class="grid grid-gap-xl width-full width-max-1024 margin-auto-horizontal margin-xl-bottom" v-bind:class="isMobile === true ? 'grid-col-1' : 'grid-col-1-3'">
-      <div v-if="isMobile === false" class="grid-item nav-border-right vstack height-full margin-none padding-m-right text-align-right">
+    <div class="width-full width-max-1024 margin-auto-horizontal margin-xl-bottom" v-bind:class="isMobile === true ? 'vstack align-stretch justify-start' : 'hstack align-start justify-stretch'">
+      <div v-if="isMobile === false" class="nav-border-right vstack width-max-content width-max-256 height-full margin-none padding-m-right text-align-right">
         <div v-for="item in projects" v-bind:key="item.id" class="tabbar-vertical-item cursor-pointer" v-bind:class="state.currentProjectId === item.id ? 'tabbar-vertical-item-selected' : ''" v-on:click="setSelectedProject(item.id)">{{ item.name }}</div>
       </div>
-      <div v-else class="grid-item nav-border-bottom hstack overflow-x-auto align-center justify-stretch width-full padding-xs-bottom">
+      <div v-else class="nav-border-bottom hstack overflow-x-auto align-center justify-stretch width-full padding-xs-bottom">
         <div v-for="item in projects" v-bind:key="item.id" class="project-tab tabbar-vertical-item margin-none padding-xs-top padding-xs-bottom padding-s-left padding-s-right text-align-center" v-bind:class="state.currentProjectId === item.id ? 'tabbar-vertical-item-selected' : ''" v-on:click="setSelectedProject(item.id)">{{ item.name }}</div>
       </div>
       <transition name="fade">
-        <div v-show="isVisible.projectCard === true" class="grid-item vstack card width-full padding-m">
+        <div v-show="isVisible.projectCard === true" class="vstack card width-full padding-m" v-bind:class="isMobile === false ? 'margin-m-left' : ''">
           <div class="margin-s-bottom text-align-center">
             <h3 class="margin-xs-top margin-none-bottom line-height-1 text-color-accent-primary font-scale-xxl">{{ selectedProject.name }}</h3>
             <h4 class="margin-xs-top margin-none-bottom line-height-inherit">{{ selectedProject.timeRange }}</h4>

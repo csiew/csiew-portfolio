@@ -134,11 +134,6 @@
 .grid-col-5 { grid-template-columns: repeat(5, 1fr) !important; }
 .grid-col-9 { grid-template-columns: repeat(9, 1fr) !important; }
 
-.grid-col-1-2 { grid-template-columns: 1fr 2fr; }
-.grid-col-2-1 { grid-template-columns: 2fr 1fr; }
-.grid-col-1-3 { grid-template-columns: 1fr 3fr; }
-.grid-col-3-1 { grid-template-columns: 3fr 1fr; }
-
 .grid-row-auto { grid-template-rows: auto !important; }
 .grid-row-1fr { grid-template-rows: 1fr !important; }
 .grid-row-max-content { grid-template-rows: max-content !important; }
@@ -401,6 +396,12 @@
 .dark-mode .invert {
     filter: invert(1) !important;
     -webkit-filter: invert(1) !important;
+}
+@media (prefers-color-scheme: dark) {
+    .invert-auto {
+        filter: invert(1) !important;
+        -webkit-filter: invert(1) !important;
+    }
 }
 
 .opacity-25 { opacity: 25% !important; }
